@@ -3,13 +3,14 @@ import userRoutes from "./modules/usuario/routes/usuario.routes";
 
 const server = Fastify()
 
+// Caso a gente queira testar se o servidor está rodando.
 server.get('/healthcheck', async()=>{
     return {status: "OK"}
 })
 
 async function main(){
 
-    //Gegistrar as rotas:
+    //REGISTRO DAS ROTAS:
 
     //Registro da criação do usuário:
     server.register(userRoutes, {prefix: 'api/usuario'}) //-> prefixo da rota já definido aqui

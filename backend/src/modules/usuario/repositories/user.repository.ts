@@ -1,10 +1,11 @@
 import prisma from "../../../utils/prisma";
-import { createUserSchema } from "../schema/user.schema";
+import { createUserInput} from "../schema/user.schema";
 
 
 //Criar usuario
-export async function createUser(data: createUserSchema){
+export async function createUser(data: createUserInput){
     const user = await prisma.usuario.create({
         data,
     })
+    return user
 }

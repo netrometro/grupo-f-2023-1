@@ -17,4 +17,4 @@ const createUserSchema = z.object({
 
 })
 
-export type createUserSchema = z.infer<typeof createUserSchema> //-> será usado como o nosso 'tipo'
+export type createUserInput = z.infer<typeof createUserSchema> //-> será usado como o nosso 'tipo'
