@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  db-postgres-doemais:
+    image: postgres:alpine
+    ports:
+      - "5433:5432"
+    container_name: "db-postgres-doemais"
+    restart: always
+    volumes:
+      - ./db-postgres-doemais:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: admuser
+      POSTGRES_PASSWORD: admuser
+volumes:
+  db-postgres-doemais:
+    
