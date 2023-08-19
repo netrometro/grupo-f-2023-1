@@ -1,0 +1,2 @@
+//Criar categoria(não precisa passar nada no body)
+POST http://localhost:3000/api/categoria

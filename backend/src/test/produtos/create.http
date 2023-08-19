@@ -1,0 +1,9 @@
+
+POST http://localhost:3000/api/produto
+Content-Type: application/json
+
+{
+    "titulo": "Carrinho de criança",
+	"descricao": "Esse carrinho era da minha filha, está em um ótimo estado",
+	"categoriaId": 5
+}

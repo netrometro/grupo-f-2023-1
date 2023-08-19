@@ -1,0 +1,2 @@
+//Passar o id para buscar por id
+GET http://localhost:3000/api/categoria/1
