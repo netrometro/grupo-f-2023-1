@@ -13,7 +13,6 @@ const createUserSchema = z.object({
     })
 
     //Outras validações aqui:  
-
 }) 
 
 export type createUserInput = z.infer<typeof createUserSchema> //-> será usado como o nosso 'tipo'

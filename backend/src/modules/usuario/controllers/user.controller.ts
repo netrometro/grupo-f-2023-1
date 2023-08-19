@@ -17,8 +17,8 @@ export async function registerUserHandler(request: FastifyRequest<{Body: createU
      }
 }
 
+//listar usuário
 export async function getUsersHandler(){
     const users = await findUsers()
-
     return users
 }

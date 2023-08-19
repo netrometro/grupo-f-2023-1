@@ -10,6 +10,7 @@ export async function createUser(data: createUserInput){
     return user
 }
 
+//listar usuário
 export async function findUsers(){
     return prisma.usuario.findMany()
 }
