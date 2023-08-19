@@ -1,5 +1,7 @@
 import Fastify from "fastify";
 import userRoutes from "./modules/usuario/routes/usuario.routes";
+import categoriesRoutes from "./modules/categoria/routes/category.routes";
+import productRoutes from "./modules/produtos/routes/produtos.routes";
 
 const server = Fastify()
 
@@ -14,6 +16,8 @@ async function main(){
 
     //Registro da criação do usuário:
     server.register(userRoutes, {prefix: 'api/usuario'}) //-> prefixo da rota já definido aqui
+    server.register(categoriesRoutes, {prefix: 'api/categoria'}) 
+    server.register(productRoutes, {prefix: 'api/produto'}) 
 
 
     //Registro da criação dos produtos: 

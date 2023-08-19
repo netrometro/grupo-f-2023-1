@@ -10,7 +10,6 @@ export async function createProducts(data:CreateProductImput){
     return produto
 }
 
-
 //listar produtos
 export async function findProducts(){
     return prisma.produto.findMany()

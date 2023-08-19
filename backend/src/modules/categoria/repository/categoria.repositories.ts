@@ -1,40 +1,34 @@
+import { FastifyReply, FastifyRequest } from "fastify";
 import prisma from "../../../utils/prisma";
 
 
-const categorias = [
-    {
-      categoriaNome: "Roupas",
-      id: 1
-    },
-    {
-      categoriaNome: "Alimentos",
-      id: 2
-    },
-    {
-      categoriaNome: "Brinquedos",
-      id: 3
-    },
-    {
-      categoriaNome: "Livros",
-      id: 4
-      },
-    {
-       categoriaNome: "Móveis",
-       id: 5
-    },
-  ];
-
-  //Criar as categorias
-
-export async function createCategory(){
-    const categoriasElementos = await prisma.categoria.createMany({
-        data: categorias, skipDuplicates: true
-    })
-    return categoriasElementos
+//Criar o tipo
+export interface Categoria {
+  categoriaNome: string;
+  id: number;
 }
 
-//Listar as categorias
 
+  //Criar as categorias
+  export async function createCategory(categories: Categoria[]) {
+    const categoriasElementos = await prisma.categoria.createMany({
+      data: categories,
+      skipDuplicates: true,
+    });
+    return categoriasElementos;
+  }
+
+//Listar as categorias
 export async function getCategories(){
-    return prisma.categoria.findMany({})
+    return prisma.categoria.findMany()
+}
+
+
+//Listar as categorias por id --> Talvez não use
+export async function getCategorie(id:number){
+  return prisma.categoria.findFirst({
+    where:{
+      id
+    }
+  })
 }
