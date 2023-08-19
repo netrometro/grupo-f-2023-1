@@ -15,3 +15,12 @@ export async function findProducts(){
     return prisma.produto.findMany()
 }
 
+//listar produto por categoria
+
+export async function findProductsByCategory(categoriaId:number){
+    return prisma.produto.findMany({
+        where:{
+            categoriaId
+        }
+    })
+}

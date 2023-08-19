@@ -8,7 +8,6 @@ export interface Categoria {
   id: number;
 }
 
-
   //Criar as categorias
   export async function createCategory(categories: Categoria[]) {
     const categoriasElementos = await prisma.categoria.createMany({
@@ -22,7 +21,6 @@ export interface Categoria {
 export async function getCategories(){
     return prisma.categoria.findMany()
 }
-
 
 //Listar as categorias por id --> Talvez não use
 export async function getCategorie(id:number){

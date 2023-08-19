@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { Categoria, createCategory, getCategorie } from "../repository/categoria.repositories";
+import { Categoria, createCategory, getCategorie, getCategories } from "../repository/categoria.repositories";
 import prisma from "../../../utils/prisma";
 
 
@@ -37,6 +37,14 @@ export async function createCategoryHandler() {
       return error
     }
   }
+
+
+  //buscar todas as categorias
+export async function getAllCategories(){
+  const categorias = await getCategories()
+  return categorias
+}
+
 
 
   //buscar categoria por id
