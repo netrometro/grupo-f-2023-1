@@ -1,5 +1,5 @@
 import {FastifyRequest, FastifyReply} from "fastify"
-import { createUser } from "../repositories/user.repository"
+import { createUser, findUsers } from "../repositories/user.repository"
 import { createUserInput } from "../schema/user.schema"
 
 
@@ -15,4 +15,10 @@ export async function registerUserHandler(request: FastifyRequest<{Body: createU
         console.log("Erro ao criar usuário: " + error)
         return reply.code(500).send(error)
      }
+}
+
+export async function getUsersHandler(){
+    const users = await findUsers()
+
+    return users
 }
