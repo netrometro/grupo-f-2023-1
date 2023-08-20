@@ -27,10 +27,16 @@ export function Home() {
 
     
   return (
-    <>
-      <Text>
-        TESTE
-      </Text>
-    </>
+    <div>
+        <h1>Produtos para doação</h1>
+        <ul>
+            {produtos.map(Produto => (
+                <ul>
+                    <li key={Produto.id}>{Produto.titulo}</li>
+                    <li key={Produto.id}>{Produto.descricao}</li>
+                </ul>
+            ))}
+        </ul>
+    </div>
   );
 }
