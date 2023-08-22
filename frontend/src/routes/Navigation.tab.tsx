@@ -6,8 +6,6 @@ import { MyItens } from '../screen/myItens/MyArea';
 import { Feather } from '@expo/vector-icons'; 
 
 
-
-
 const Tab = createBottomTabNavigator()
 
 export default function TabComponent() {
