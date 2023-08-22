@@ -11,3 +11,7 @@
 <h2>Para rodar o servidor:</h2>
 
 1- npm run dev
+
+
+<h2>Documentações:</h2>
+1 - <a href="https://www.figma.com/file/KIQwdqEDHyy7cHpSyePg3y/DoeMais?node-id=33%3A17&mode=dev"> Figma</a>
