@@ -9,6 +9,7 @@ export function Inicial({navigation}) {
             <View>
                 <Text>
                     TELA INICIAL DOE MAIS
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium voluptatum eius voluptatibus quo, quas quaerat sed veniam minus molestiae et odio placeat libero aperiam quos. Eaque distinctio sequi officiis ipsa.
                 </Text>
             </View>
             <View>
@@ -18,12 +19,12 @@ export function Inicial({navigation}) {
             </View>
             <View>
                 <Button title="Login" onPress={()=>{
-                    navigation.navigate("") //->Quando criar colocar aqui
+                    navigation.navigate("LogIn") //->Quando criar colocar aqui
                 }}/>
             </View>
             <View>
                 <Button title="Cadastro" onPress={()=>{
-                    navigation.navigate("") //->Quando criar colocar aqui
+                    navigation.navigate("SignIn") //->Quando criar colocar aqui
                 }}/>
             </View>
             

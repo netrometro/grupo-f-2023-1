@@ -4,6 +4,7 @@ import listarProdutos from "../../services/listarProdutos/listarProdutos";
 import { useNavigation} from '@react-navigation/native';
 
 
+
 // Pagina home, primeira página mostrada ao cliente logado, mostra todos os produtos.
 
 export function Home() {
@@ -40,5 +41,6 @@ export function Home() {
                 )}
             /> 
         </View>
+
     );
 }
