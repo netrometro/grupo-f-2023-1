@@ -23,37 +23,48 @@ export default function TabComponent() {
           left:14,
           right:14,
           elevation:0,
-          borderRadius:14
+          borderRadius:14,
+          height: 50,
 
         
-        }, // Define a cor de fundo da guia como amarela
+        },
       }}
       > 
           <Tab.Screen
            name='Produtos'
             component={Home}
             options={{
-              tabBarIcon: () => <Feather name="home" size={24}  color="#808080" />,
-
-              
-            }}
-            
+              tabBarIcon: ({focused}) => 
+              focused
+              ? <Feather name="home" size={30}  color="#7353ED"  />
+              : <Feather name="home" size={24}  color="#808080"  />,
+              headerShown:false,
+       
+            }}          
             ></Tab.Screen>
           <Tab.Screen
            name='Meus Produtos'
           component={MyItens}
           options={{
-            tabBarIcon: () => <Feather name="user" size={24}  color="#808080" />,
-
-          }}
+            tabBarIcon: ({focused}) => 
+            focused
+            ? <Feather name="user" size={30}  color="#7353ED"  />
+            : <Feather name="user" size={24}  color="#808080"  />,
+            headerShown:false,
+     
+          }}      
           ></Tab.Screen>
           <Tab.Screen 
           name='Fazer Doações'
           component={DonateArea}
           options={{
-            tabBarIcon: () => <Feather name="plus-square" size={24}   color="#808080"/>,
-
-          }}
+            tabBarIcon: ({focused}) => 
+            focused
+            ? <Feather name="plus-square" size={30}  color="#7353ED"  />
+            : <Feather name="plus-square" size={24}  color="#808080"  />,
+            headerShown:false,
+     
+          }}      
           ></Tab.Screen>
       </Tab.Navigator>    
   );
