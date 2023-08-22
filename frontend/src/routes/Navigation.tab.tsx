@@ -15,6 +15,7 @@ export default function TabComponent() {
         tabBarShowLabel: false,
         tabBarHideOnKeyboard:true,
         
+        
         tabBarStyle: { 
           position: 'absolute',
           backgroundColor: "#232231" ,

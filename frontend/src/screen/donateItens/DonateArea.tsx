@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, KeyboardAvoidingView } from "react-native";
-import { RadioButton } from "react-native-paper";
+import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { RadioButton, Button  } from "react-native-paper";
 import Estilo from "./Styles";
 
 export function DonateArea() {
@@ -71,9 +71,10 @@ export function DonateArea() {
         <TextInput style={Estilo.descricaoImput} />
       </View>
 
-      <View style={Estilo.botaoDoarContainer}>
-        <Text>Doar</Text>
-      </View>
+
+        <Button style={Estilo.botaoDoar} mode="contained" onPress={() => console.log('Pressed')}>
+         Fazer Doação
+        </Button>
     </View>
   );
 }

@@ -10,14 +10,18 @@ export default StyleSheet.create({
   },
 
   imagem: {
-    backgroundColor: "blue",
-    width: 150,
+    marginTop:30,
+    backgroundColor: "#232231",
+    width: 180,
     height: 150,
     display: "flex",
     alignItems: "center",
     justifyContent: "space-evenly",
+    borderRadius:30
   },
-  imagemText: {},
+  imagemText: {
+    color:"#808080"
+  },
 
   tituloContainer: {
 
@@ -32,11 +36,11 @@ export default StyleSheet.create({
   },
 
   tituloImput: {
-    backgroundColor:"#808080",
+    backgroundColor:"#232231",
     borderRadius:12,
     height:50,
     paddingLeft:15,
-    color:"#191924",
+    color:"#808080",
     fontWeight:"bold",
     
   },
@@ -76,14 +80,20 @@ export default StyleSheet.create({
     color:"white"
   },
   descricaoImput: {
-    backgroundColor:"#808080",
+    backgroundColor:"#232231",
     height:120,
-    borderRadius:12
+    borderRadius:12,
+    textAlignVertical:"top",
+    padding:15,
+    color:"#808080",
+    fontWeight:"bold"
   },
 
-  botaoDoarContainer: {
-    backgroundColor: "grey",
-    width: 150,
-    height: 150,
-  },
+
+  botaoDoar:{
+    marginTop:20,
+    backgroundColor:"#7353ED",
+    width:250,
+    height:45,
+  }
 });
