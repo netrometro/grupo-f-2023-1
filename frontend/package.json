@@ -10,7 +10,13 @@
   },
   "dependencies": {
     "@expo/webpack-config": "18.0.1",
+<<<<<<< HEAD
     "@react-navigation/native": "^6.1.7",
+=======
+    "@react-navigation/bottom-tabs": "^6.5.8",
+    "@react-navigation/native": "^6.1.7",
+    "@react-navigation/native-stack": "^6.9.13",
+>>>>>>> 0d06481b84f035b57cda7d3887c928b46088423a
     "@types/react": "~18.2.14",
     "axios": "^1.4.0",
     "expo": "~49.0.7",
