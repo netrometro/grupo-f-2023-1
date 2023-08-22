@@ -7,7 +7,7 @@ export function DonateArea() {
   return (
    <View>
        <Text>
-            Teste aqui
+            Teste da minha tela de doação
        </Text>
    </View>
   );
