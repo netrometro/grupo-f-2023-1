@@ -15,7 +15,8 @@ export default function StackComponent() {
           <Stack.Screen name='Tela Inicial' component={Inicial}></Stack.Screen>
           <Stack.Screen name='LogIn' component={Login}></Stack.Screen>
           <Stack.Screen name='SignIn' component={SignIn}></Stack.Screen>
-          <Stack.Screen name='Home' component={TabComponent}></Stack.Screen>
+          <Stack.Screen name='Home' component={TabComponent}></Stack.Screen> 
+
       </Stack.Navigator>    
    
   );
