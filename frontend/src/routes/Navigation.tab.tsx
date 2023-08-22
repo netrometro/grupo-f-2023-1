@@ -12,12 +12,30 @@ const Tab = createBottomTabNavigator()
 
 export default function TabComponent() {
   return (
-      <Tab.Navigator initialRouteName='Home'> 
+      <Tab.Navigator
+      screenOptions={{
+        tabBarShowLabel: false,
+        tabBarStyle: { 
+          position: 'absolute',
+          backgroundColor: "#232231" ,
+          borderTopWidth: 0,
+          bottom:14,
+          left:14,
+          right:14,
+          elevation:0,
+          borderRadius:14
+
+        
+        }, // Define a cor de fundo da guia como amarela
+      }}
+      > 
           <Tab.Screen
            name='Produtos'
             component={Home}
             options={{
-              tabBarIcon: () => <Feather name="home" size={24} color="black" />
+              tabBarIcon: () => <Feather name="home" size={24}  color="#808080" />,
+
+              
             }}
             
             ></Tab.Screen>
@@ -25,14 +43,16 @@ export default function TabComponent() {
            name='Meus Produtos'
           component={MyItens}
           options={{
-            tabBarIcon: () => <Feather name="user" size={24} color="black" />
+            tabBarIcon: () => <Feather name="user" size={24}  color="#808080" />,
+
           }}
           ></Tab.Screen>
           <Tab.Screen 
           name='Fazer Doações'
           component={DonateArea}
           options={{
-            tabBarIcon: () => <Feather name="plus-square" size={24} color="black" />
+            tabBarIcon: () => <Feather name="plus-square" size={24}   color="#808080"/>,
+
           }}
           ></Tab.Screen>
       </Tab.Navigator>    
