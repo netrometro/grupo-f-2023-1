@@ -12,7 +12,7 @@ export default function StackComponent() {
     <NavigationContainer>
        {/* Define o navegador com a tela inicial 'Home'. Trocar depois para o fuxo que está no figma*/}
       <Stack.Navigator initialRouteName='Inicial'> 
-          <Stack.Screen name='Inical' component={Inicial}></Stack.Screen>
+          <Stack.Screen name='Tela Inicial' component={Inicial}></Stack.Screen>
           <Stack.Screen name='Home' component={Home}></Stack.Screen>
           <Stack.Screen name='Donation' component={DonateArea}></Stack.Screen>
       </Stack.Navigator>      
