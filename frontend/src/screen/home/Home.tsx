@@ -6,7 +6,7 @@ import { useNavigation} from '@react-navigation/native';
 
 // Pagina home, primeira página mostrada ao cliente logado, mostra todos os produtos.
 
-export function Home({navigation}) {
+export function Home() {
 
     
     // Parte responsável por carregar os produtos, usando a função listarProdutos.
@@ -39,11 +39,6 @@ export function Home({navigation}) {
                     </View>
                 )}
             /> 
-            <View>
-                <Button title="Fazer Doação" onPress={()=>{
-                    navigation.navigate("Donation") //-> O nome 'Donation' é o mesmo que o que está aqui: <Stack.Screen name='Donation' component={DonateArea}></Stack.Screen>
-                }}/>
-            </View>
         </View>
     );
 }
