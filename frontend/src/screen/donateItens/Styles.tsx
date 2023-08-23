@@ -27,7 +27,7 @@ export default StyleSheet.create({
   },
 
   tituloContainer: {
-
+    marginTop:50,
     width: 330,
     height: 100,
     display: "flex",
