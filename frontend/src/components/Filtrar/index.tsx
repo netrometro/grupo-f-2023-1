@@ -52,7 +52,7 @@ const ProductListScreen: React.FC = ({ updateFilteredProducts }) => {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <TouchableOpacity onPress={toggleModal} style={styles.filterButton}>
-        <Feather name="filter" size={30} color="#cecece" style={styles.filterIcon} />
+        <Feather name="filter" size={20} color="#cecece" style={styles.filterIcon} />
       </TouchableOpacity>
 
       <Modal visible={isModalVisible} animationType="slide" transparent>
@@ -124,7 +124,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 999,
   },
