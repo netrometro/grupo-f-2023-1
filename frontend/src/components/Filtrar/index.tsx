@@ -41,6 +41,13 @@ const ProductListScreen: React.FC = ({ updateFilteredProducts }) => {
     toggleModal();
   };
 
+  const handleClearFilters = () => {
+    setFilteredProducts([]);
+    updateFilteredProducts([]); // Atualiza a lista de produtos na tela Home
+    setSelectedOption(null);
+    toggleModal();
+  };
+
 
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -64,6 +71,8 @@ const ProductListScreen: React.FC = ({ updateFilteredProducts }) => {
             ))}
             <Button title="Ok" onPress={handleOkPress} />
             <Button title="Cancelar" onPress={toggleModal} />
+            <Button title="Limpar Filtros" onPress={handleClearFilters} />
+
           </View>
         </View>
       </Modal>
