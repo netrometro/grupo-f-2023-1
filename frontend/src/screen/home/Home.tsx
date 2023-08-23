@@ -40,17 +40,17 @@ export function Home() {
         <Text style={estilo.titulo}>Produtos para doação</Text>
         <ProductListScreen updateFilteredProducts={updateFilteredProducts} />
       </View>
-      <FlatList
-        data={filteredProducts.length > 0 ? filteredProducts : produtos}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => (
-          <View>
-            {/* <Text>{item.titulo}</Text>
-            <Text>{item.descricao}</Text> */}
-            <Produto nome={item.titulo}/>
-          </View>
-        )}
-      />
-    </View>
+        <FlatList style={{
+          marginBottom: 70
+        }}
+          data={filteredProducts.length > 0 ? filteredProducts : produtos}
+          keyExtractor={(item) => item.id.toString()}
+          numColumns={2}
+          contentContainerStyle={{ flexGrow: 1, alignItems: 'center' }} // Centraliza verticalmente
+          renderItem={({ item }) => (
+              <Produto nome={item.titulo}/>
+          )}
+        />
+      </View>
   );
 }
