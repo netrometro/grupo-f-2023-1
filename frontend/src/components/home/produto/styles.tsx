@@ -3,17 +3,19 @@ import { StyleSheet} from "react-native";
 export default StyleSheet.create({
     produto:{
         backgroundColor: '#7353ED',
-        height: 140,
+        height: 160,
         width: 140,
         margin: 21,
         borderRadius: 18,
         alignSelf: 'center',
-        flexDirection: "column-reverse",
-        alignItems: "center"
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        textAlign: "center"
     },
     produtoTras:{
         backgroundColor: '#232231',
-        height: 140,
+        height: 110,
         width: 140,
         borderRadius: 18,
         alignSelf: 'center',
@@ -21,5 +23,6 @@ export default StyleSheet.create({
     },
     nome:{
         color: 'white',
+        textAlign: "center"
     }
 })

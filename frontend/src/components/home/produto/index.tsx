@@ -7,9 +7,9 @@ export function Produto({nome}) {
 
     return (
         <View style={estilo.produto}>
-                <Text style={estilo.nome}>{nome}</Text>
             <View style={estilo.produtoTras}>
             </View>
+                <Text style={estilo.nome}>{nome}</Text>
         </View>
 
     );
