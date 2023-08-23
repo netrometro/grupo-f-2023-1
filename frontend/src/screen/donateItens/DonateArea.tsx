@@ -86,6 +86,16 @@ export function DonateArea() {
             />
             <Text style={Estilo.textRaio}>Livros</Text>
           </View>
+
+          <View style={Estilo.TextAndRadio}>
+            <RadioButton
+              color={selectedCategory === "checked" ? "#808080" : "#7353ED"}
+              value="4"
+              status={selectedCategory === "5" ? "checked" : "unchecked"}
+              onPress={() => setSelectedCategory("5")}
+            />
+            <Text style={Estilo.textRaio}>Transporte</Text>
+          </View>
         </View>
       </View>
 

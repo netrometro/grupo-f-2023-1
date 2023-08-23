@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
 import { View, Text, Button, Modal, TouchableOpacity, StyleSheet, FlatList } from 'react-native';
-import filtrarProdutos from "../../services/filtrarProdutos/filtrarProdutos";
+import filtrarhoras from "../../services/filtrarhoras/filtrarhoras";
 import { Feather } from '@expo/vector-icons';
 
 const options = [
-  { id: 1, label: 'roupas' },
-  { id: 2, label: 'alimentos' },
-  { id: 3, label: 'brinquedos' },
-  { id: 4, label: 'livros' },
-  { id: 5, label: 'Transporte' },
+  { id: 1, label: 'horas' },
+  
+
 ];
 
-const ProductListScreen: React.FC = ({ updateFilteredProducts }) => {
+function ProductListScreen({ updateFilteredProducts }) {
   const [isModalVisible, setModalVisible] = useState<boolean>(false);
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [filteredProducts, setFilteredProducts] = useState<any[]>([]);
@@ -77,10 +75,10 @@ const ProductListScreen: React.FC = ({ updateFilteredProducts }) => {
         </View>
       </Modal>
 
-      
+
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   modalContainer: {
