@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Button, Modal, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, Button, Modal, TouchableOpacity, StyleSheet, FlatList } from 'react-native';
 import filtrarProdutos from "../../services/filtrarProdutos/filtrarProdutos";
 import { Feather } from '@expo/vector-icons';
 
@@ -11,9 +11,10 @@ const options = [
   { id: 5, label: 'moveis' },
 ];
 
-const ProductListScreen: React.FC = () => {
+const ProductListScreen: React.FC = ({ updateFilteredProducts }) => {
   const [isModalVisible, setModalVisible] = useState<boolean>(false);
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
+  const [filteredProducts, setFilteredProducts] = useState<any[]>([]);
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
@@ -29,7 +30,8 @@ const ProductListScreen: React.FC = () => {
         const selectedId = options.find(option => option.id === selectedOption)?.id;
         if (selectedId) {
           const produtos = await filtrarProdutos(selectedId);
-          console.log('Produtos filtrados:', produtos);
+          setFilteredProducts(produtos);
+          updateFilteredProducts(produtos);
         }
       } catch (error) {
         console.error('Erro ao filtrar produtos:', error);
@@ -38,6 +40,7 @@ const ProductListScreen: React.FC = () => {
 
     toggleModal();
   };
+
 
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -64,6 +67,8 @@ const ProductListScreen: React.FC = () => {
           </View>
         </View>
       </Modal>
+
+      
     </View>
   );
 };

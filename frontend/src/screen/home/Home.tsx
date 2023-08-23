@@ -1,48 +1,43 @@
-import React, { useEffect, useState } from "react";
-import { Text, View, FlatList, Button } from 'react-native';
+import React, { useState, useEffect } from "react";
+import { View, Text, FlatList } from 'react-native';
 import listarProdutos from "../../services/listarProdutos/listarProdutos";
-import { useNavigation} from '@react-navigation/native';
-
 import ProductListScreen from './../../components/Filtrar/index';
 
-
-// Pagina home, primeira página mostrada ao cliente logado, mostra todos os produtos.
-
 export function Home() {
+  const [produtos, setProdutos] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
-    
-    // Parte responsável por carregar os produtos, usando a função listarProdutos.
+  useEffect(() => {
+    async function carregarProdutos() {
+      try {
+        const produtosData = await listarProdutos();
+        setProdutos(produtosData);
+      } catch (error) {
+        console.error('Erro ao carregar produtos:', error);
+      }
+    }
 
-    const [produtos, setProdutos] = useState([]);
+    carregarProdutos();
+  }, []);
 
-    useEffect(() => {
-        async function carregarProdutos() {
-            try {
-                const produtosData = await listarProdutos();
-                setProdutos(produtosData);
-            } catch (error) {
-                console.error('Erro ao carregar produtos:', error);
-            }
-        }
+  const updateFilteredProducts = (filteredItems) => {
+    setFilteredProducts(filteredItems);
+  };
 
-        carregarProdutos();
-    }, []);
-
-    return (
-        <View>
-            <ProductListScreen />
-            <Text>Produtos para doação</Text>
-            <FlatList
-                data={produtos}
-                keyExtractor={(item) => item.id.toString()}
-                renderItem={({ item }) => (
-                    <View>
-                        <Text>{item.titulo}</Text>
-                        <Text>{item.descricao}</Text>
-                    </View>
-                )}
-            /> 
-        </View>
-
-    );
+  return (
+    <View>
+      <ProductListScreen updateFilteredProducts={updateFilteredProducts} />
+      <Text>Produtos para doação</Text>
+      <FlatList
+        data={filteredProducts.length > 0 ? filteredProducts : produtos}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({ item }) => (
+          <View>
+            <Text>{item.titulo}</Text>
+            <Text>{item.descricao}</Text>
+          </View>
+        )}
+      />
+    </View>
+  );
 }
