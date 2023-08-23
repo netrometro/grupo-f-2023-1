@@ -8,7 +8,7 @@ const options = [
   { id: 2, label: 'alimentos' },
   { id: 3, label: 'brinquedos' },
   { id: 4, label: 'livros' },
-  { id: 5, label: 'moveis' },
+  // { id: 5, label: 'moveis' },
 ];
 
 const ProductListScreen: React.FC = ({ updateFilteredProducts }) => {
