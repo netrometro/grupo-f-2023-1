@@ -33,12 +33,6 @@ export function DonateArea() {
 
   return (
     <View style={Estilo.container}>
-      <View style={Estilo.imagem}>
-        <Text style={Estilo.imagemText}>Imagem</Text>
-        <View>
-          <Text style={Estilo.imagemText}>Adicione imagem aqui</Text>
-        </View>
-      </View>
 
       <View style={Estilo.tituloContainer}>
         <Text style={Estilo.tituloText}>Título:</Text>
