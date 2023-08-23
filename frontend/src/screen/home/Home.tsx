@@ -34,8 +34,10 @@ export function Home() {
   return (
     <View style={estilo.container}>
       <Header />
-      <ProductListScreen updateFilteredProducts={updateFilteredProducts} />
-      <Text style={estilo.titulo}>Produtos para doação</Text>
+      <View style={estilo.filtroTitulo}>
+        <Text style={estilo.titulo}>Produtos para doação</Text>
+        <ProductListScreen updateFilteredProducts={updateFilteredProducts} />
+      </View>
       <FlatList
         data={filteredProducts.length > 0 ? filteredProducts : produtos}
         keyExtractor={(item) => item.id.toString()}
