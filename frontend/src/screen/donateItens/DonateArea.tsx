@@ -43,6 +43,7 @@ export function DonateArea() {
       <View style={Estilo.tituloContainer}>
         <Text style={Estilo.tituloText}>Título:</Text>
         <TextInput 
+        selectionColor={'#7353ED'}
         style={Estilo.tituloImput}
         value={title}
         onChangeText={setTitle} />
@@ -97,6 +98,7 @@ export function DonateArea() {
       <View style={Estilo.descricaoContainer}>
         <Text style={Estilo.descricaoText}>Descrição:</Text>
         <TextInput 
+        selectionColor={'#7353ED'}
         style={Estilo.descricaoImput}
         value={description}
         onChangeText={setDescription}

@@ -46,7 +46,8 @@ export default StyleSheet.create({
     color:"#808080",
     fontWeight:"bold",
     borderColor:"#7353ED",
-    borderWidth: .5
+    borderWidth: .5,
+    
     
   },
 
