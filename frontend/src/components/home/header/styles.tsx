@@ -10,3 +10,13 @@ export default StyleSheet.create({
         borderRadius: 18,
         alignSelf: 'center',
     },
+    textoPrincipal:{
+        color: 'white',
+        fontSize: 18,
+        paddingBottom: 15,
+    },
+    textoSecundario:{
+        color: 'white',
+        fontSize: 12,
+    }
+})
