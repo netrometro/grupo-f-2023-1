@@ -95,7 +95,7 @@ export function DonateArea() {
       </View>
 
       <View style={Estilo.descricaoContainer}>
-        <Text style={Estilo.descricaoText}>Descrição</Text>
+        <Text style={Estilo.descricaoText}>Descrição:</Text>
         <TextInput 
         style={Estilo.descricaoImput}
         value={description}

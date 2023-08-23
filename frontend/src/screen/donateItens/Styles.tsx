@@ -17,7 +17,10 @@ export default StyleSheet.create({
     display: "flex",
     alignItems: "center",
     justifyContent: "space-evenly",
-    borderRadius:30
+    borderRadius:30,
+    borderColor:"#7353ED",
+    borderWidth: .5
+    
   },
   imagemText: {
     color:"#808080"
@@ -42,6 +45,8 @@ export default StyleSheet.create({
     paddingLeft:15,
     color:"#808080",
     fontWeight:"bold",
+    borderColor:"#7353ED",
+    borderWidth: .5
     
   },
 
@@ -86,7 +91,9 @@ export default StyleSheet.create({
     textAlignVertical:"top",
     padding:15,
     color:"#808080",
-    fontWeight:"bold"
+    fontWeight:"bold",
+    borderColor:"#7353ED",
+    borderWidth: .5
   },
 
 
