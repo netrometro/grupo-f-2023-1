@@ -17,8 +17,10 @@ export function Home() {
   useEffect(() => {
     async function carregarProdutos() {
       try {
-        const produtosData = await listarProdutos();
-        setProdutos(produtosData);
+        setInterval(async()=>{
+          const produtosData = await listarProdutos();
+          setProdutos(produtosData);
+        },1000)
       } catch (error) {
         console.error('Erro ao carregar produtos:', error);
       }
