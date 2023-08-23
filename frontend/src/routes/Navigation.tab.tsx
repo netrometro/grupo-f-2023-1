@@ -13,6 +13,9 @@ export default function TabComponent() {
       <Tab.Navigator
       screenOptions={{
         tabBarShowLabel: false,
+        tabBarHideOnKeyboard:true,
+        
+        
         tabBarStyle: { 
           position: 'absolute',
           backgroundColor: "#232231" ,
@@ -23,10 +26,10 @@ export default function TabComponent() {
           elevation:0,
           borderRadius:14,
           height: 50,
-
-        
         },
       }}
+      
+     
       > 
           <Tab.Screen
            name='Produtos'
