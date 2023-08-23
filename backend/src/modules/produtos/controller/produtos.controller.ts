@@ -1,6 +1,6 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { CreateProductImput } from "../schema/produtos.schema";
-import { createProducts, findProducts, findProductsByCategory } from "../repository/produtos.repositories";
+import { createProducts, deleteProductById, findProducts, findProductsByCategory } from "../repository/produtos.repositories";
 
 //Criar produtos
 export async function createProductsHandler(request: FastifyRequest<{Body: CreateProductImput}>, reply: FastifyReply){
@@ -15,7 +15,7 @@ export async function createProductsHandler(request: FastifyRequest<{Body: Creat
 }
 
 //Listar Todos os produtos
-  export async function getAllProducts(){
+export async function getAllProducts(){
    const produtos = await findProducts()
    return produtos
  }
@@ -26,7 +26,7 @@ export async function createProductsHandler(request: FastifyRequest<{Body: Creat
 interface CategoriaParams {
    categoryId: string;
  }
- export async function getProducByCategory(request: FastifyRequest<{ Params: CategoriaParams }>, reply: FastifyReply) {
+export async function getProducByCategory(request: FastifyRequest<{ Params: CategoriaParams }>, reply: FastifyReply) {
    const categoryId = parseInt(request.params.categoryId, 10);
  
    if (isNaN(categoryId)) {
@@ -37,13 +37,33 @@ interface CategoriaParams {
      const category_product = await findProductsByCategory(categoryId);
  
      if (!category_product) {
-       reply.status(404).send({ message: "Categoria não encontrada" });
+       reply.status(404).send({ message: "Categoria não encontrada." });
        return;
      }
  
      reply.status(200).send(category_product);
    } catch (error) {
      console.log("Erro ao buscar categoria: " + error);
-     reply.status(500).send({ message: "Erro ao buscar categoria" });
+     reply.status(500).send({ message: "Erro ao buscar categoria." });
    }
- }
+}
+
+interface DelProductParams {
+  productId: string;
+}
+export async function deleteProductsHandler(request: FastifyRequest<{ Params: DelProductParams }>, reply: FastifyReply) {
+  const productId = parseInt(request.params.productId, 10);
+
+  try {
+    const deletedProduct = await deleteProductById(productId);
+    if (!deletedProduct) {
+      reply.code(400).send({ message: "O produto já não existe."});
+      return;
+    }
+    
+    reply.code(200).send("O produto foi deletado.");
+  } catch (error) {
+    console.log("Erro ao deletar o produto: " + error);
+    return reply.code(500).send({ mensage: "Um erro ocorreu ao deletar o produto"});
+  }
+}
