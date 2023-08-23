@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Text, View, FlatList, Button } from 'react-native';
 import listarProdutos from "../../services/listarProdutos/listarProdutos";
-import { useNavigation} from '@react-navigation/native';
+import estilo from "./Styles";
+import { Header } from "../../components/home/header";
+import { Produto } from "../../components/home/produto";
 
 
 
@@ -28,19 +30,21 @@ export function Home() {
     }, []);
 
     return (
-        <View>
-            <Text>Produtos para doação</Text>
+        <View style={estilo.container}>
+            <Header />
+            <Text style={estilo.titulo}>Produtos para doação</Text>
+            {/* <Produto /> */}
             <FlatList
                 data={produtos}
                 keyExtractor={(item) => item.id.toString()}
                 renderItem={({ item }) => (
                     <View>
-                        <Text>{item.titulo}</Text>
-                        <Text>{item.descricao}</Text>
+                        {/* <Text>{item.titulo}</Text>
+                        <Text>{item.descricao}</Text> */}
+                        <Produto nome={item.titulo}/>
                     </View>
                 )}
-            /> 
+                />
         </View>
-
     );
 }
