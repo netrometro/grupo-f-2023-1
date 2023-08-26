@@ -1,10 +1,36 @@
 import { useNavigation } from "@react-navigation/native";
-import React from "react";
-import { View, Text, Image, TextInput, KeyboardAvoidingView } from "react-native";
+import React, { useState } from "react";
+import { View, Text, Image, TextInput, KeyboardAvoidingView, Alert } from "react-native";
 import Estilo from "./Style";
 import { Button } from "react-native-paper";
+import {getAuth, signInWithEmailAndPassword } from 'firebase/auth'
+import{initializeApp} from 'firebase/app'
+import {firebaseConfig} from '../../config/firebase.config'
+
+
+
 
 export function Login({ navigation }) {
+
+  const[email, setEmail] = React.useState('')
+  const[senha, setSenha] = React.useState('')
+
+  const app = initializeApp(firebaseConfig)
+  const auth = getAuth(app)
+
+  const handleLogIn = () => {
+    signInWithEmailAndPassword(auth, email, senha)
+      .then((userCredential) => { // Obtenha o userCredential da função de retorno
+        console.log("usuário logado");
+        const user = userCredential.user; // Agora você pode acessar a propriedade user
+        console.log("Usuário:", user);
+      })
+      .catch((error) => {
+        Alert.alert("Senha ou Email incorreto")
+        console.error("erro ao logar:", error);
+      });
+  }
+
   return (
     <KeyboardAvoidingView 
     behavior="position"
@@ -23,19 +49,21 @@ export function Login({ navigation }) {
           placeholder="Seu Email"
           selectionColor={"#7353ED"}
           style={Estilo.input}
+          onChangeText={(text)=> setEmail(text)}
         />
         <TextInput
           placeholderTextColor="#808080"
           placeholder="Sua Senha"
           selectionColor={"#7353ED"}
           style={Estilo.input}
+          onChangeText={(text)=> setSenha(text)}
         />
 
         <Button
         style = {{width:230}}
           textColor="white"
           mode="contained"
-          onPress={() => console.log("Pressed")}
+          onPress={handleLogIn}
         >
           Login
         </Button>

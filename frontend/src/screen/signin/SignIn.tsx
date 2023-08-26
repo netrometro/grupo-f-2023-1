@@ -1,10 +1,41 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { View, Text, Image, TextInput, FlatList, KeyboardAvoidingView } from "react-native";
+import { View, Text, Image, TextInput, FlatList, KeyboardAvoidingView, Alert } from "react-native";
 import Estilo from "./styles";
 import { Button } from "react-native-paper";
+import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
+import{initializeApp} from 'firebase/app'
+import {firebaseConfig} from '../../config/firebase.config'
 
-export function SignIn({ navigation }) {
+
+export function SignIn() {
+
+  const[email, setEmail] = React.useState('')
+  const[senha, setSenha] = React.useState('')
+  const navigation = useNavigation()
+
+
+  const app = initializeApp(firebaseConfig)
+  const auth = getAuth(app)
+
+  const handleCreateAccount = () => {
+    createUserWithEmailAndPassword(auth, email, senha)
+      .then((userCredential) => { // Obtenha o userCredential da função de retorno
+        console.log("Conta criada");
+        const user = userCredential.user; // Agora você pode acessar a propriedade user
+        console.log("Usuário:", user);
+        setEmail('')
+        setSenha('')
+        navigation.navigate('Login');
+        
+      })
+      .catch((error) => {
+        console.error("Erro ao criar conta:", error);
+      });
+      
+    }
+    
+
   return (
     <KeyboardAvoidingView
      behavior="position"
@@ -24,6 +55,7 @@ export function SignIn({ navigation }) {
           placeholder="Seu Email"
           selectionColor={"#7353ED"}
           style={Estilo.input}
+          onChangeText={(text)=> setEmail(text)}
         />
         <TextInput
           autoCorrect={false}
@@ -31,13 +63,14 @@ export function SignIn({ navigation }) {
           placeholder="Sua Senha"
           selectionColor={"#7353ED"}
           style={Estilo.input}
+          onChangeText={(text)=> setSenha(text)}
         />
 
         <Button
           style = {{width:230}}
           textColor="white"
           mode="contained"
-          onPress={() => console.log("Pressed")}
+          onPress={handleCreateAccount}
         >
           Cadastrar
         </Button>
