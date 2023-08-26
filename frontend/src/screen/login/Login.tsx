@@ -24,6 +24,7 @@ export function Login({ navigation }) {
         console.log("usuário logado");
         const user = userCredential.user; // Agora você pode acessar a propriedade user
         console.log("Usuário:", user);
+        navigation.navigate('Home');
       })
       .catch((error) => {
         Alert.alert("Senha ou Email incorreto")

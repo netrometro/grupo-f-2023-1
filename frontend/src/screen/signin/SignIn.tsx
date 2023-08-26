@@ -8,11 +8,11 @@ import{initializeApp} from 'firebase/app'
 import {firebaseConfig} from '../../config/firebase.config'
 
 
-export function SignIn() {
+export function SignIn({navigation}) {
 
   const[email, setEmail] = React.useState('')
   const[senha, setSenha] = React.useState('')
-  const navigation = useNavigation()
+
 
 
   const app = initializeApp(firebaseConfig)
@@ -26,7 +26,7 @@ export function SignIn() {
         console.log("Usuário:", user);
         setEmail('')
         setSenha('')
-        navigation.navigate('Login');
+        navigation.navigate('LogIn');
         
       })
       .catch((error) => {
