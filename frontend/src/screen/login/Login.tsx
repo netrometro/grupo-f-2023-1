@@ -1,17 +1,34 @@
-import { useNavigation} from '@react-navigation/native';
-import React from 'react';
-import { Button, View, Text } from 'react-native';
+import { useNavigation } from "@react-navigation/native";
+import React from "react";
+import { View, Text, Image } from "react-native";
+import Estilo from "./Style";
+import { Button } from "react-native-paper";
 
-
-export function Login({navigation}) {
-    return (
+export function Login({ navigation }) {
+  return (
+    <View style={Estilo.container}>
+      <View style={Estilo.container_image}>
         <View>
-            <View>
-                <Text>
-                    TELA INICIAL DO LOGIN
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium voluptatum eius voluptatibus quo, quas quaerat sed veniam minus molestiae et odio placeat libero aperiam quos. Eaque distinctio sequi officiis ipsa.
-                </Text>
-            </View>
+          <Image
+            style={Estilo.image}
+            source={require("../../assets/sittingLady.png")}
+          />
         </View>
-    );
+      </View>
+      <Button
+      style={Estilo.button}
+        icon='google'
+        textColor="white"
+        mode="contained"
+        onPress={() => console.log("Pressed")}
+      >
+       Login com o Google
+      </Button>
+      <View>
+        <Text>
+            Seja a diferença
+        </Text>
+      </View>
+    </View>
+  );
 }

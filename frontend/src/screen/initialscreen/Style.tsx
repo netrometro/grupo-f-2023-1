@@ -12,12 +12,13 @@ export default StyleSheet.create({
 
     container_image_text:{
         backgroundColor:"#232231",
-        height:400,
+        height:450,
         width:350,
         borderRadius:20,
         display: "flex",
         alignItems:"center",
-        justifyContent: "space-around"
+        justifyContent: "space-around",
+        marginTop:30
 
     },
 

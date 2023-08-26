@@ -18,7 +18,19 @@ export default function StackComponent() {
             headerShown:false
           }} 
           ></Stack.Screen>
-          <Stack.Screen name='LogIn' component={Login}></Stack.Screen>
+          <Stack.Screen
+           name='LogIn' 
+           component={Login}
+           options={{
+            title:"",
+            headerStyle:{
+              backgroundColor:"#191924",
+            },
+            headerTintColor:"#808080",
+           
+           }}
+           
+           ></Stack.Screen>
           <Stack.Screen name='SignIn' component={SignIn}></Stack.Screen>
           <Stack.Screen
           name='Home'
