@@ -8,7 +8,7 @@ export function SignIn({navigation}) {
 
     return (
         <View >
-           teste
+           
         </View>
     );
 }

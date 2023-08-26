@@ -41,14 +41,14 @@ export function Inicial({ navigation }) {
       <View style={Estilo.buttons_contaiener}>
         <Button style = {Estilo.buttons}
           mode="contained"
-          onPress={() => console.log("Pressed")}
+          onPress={() => navigation.navigate("LogIn")}
         >
           Login
         </Button>
         <Button style = {Estilo.buttons}
 
           mode="outlined"
-          onPress={() => console.log("Pressed")}
+          onPress={() => navigation.navigate("SignIn")}
         >
           Cadastrar
         </Button>
