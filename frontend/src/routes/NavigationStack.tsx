@@ -31,7 +31,19 @@ export default function StackComponent() {
            }}
            
            ></Stack.Screen>
-          <Stack.Screen name='SignIn' component={SignIn}></Stack.Screen>
+          <Stack.Screen 
+          name='SignIn' 
+          component={SignIn}
+          options={{
+            title:"",
+            headerStyle:{
+              backgroundColor:"#191924",
+            },
+            headerTintColor:"#808080",
+           
+           }}
+          
+          ></Stack.Screen>
           <Stack.Screen
           name='Home'
           component={TabComponent}

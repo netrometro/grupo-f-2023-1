@@ -22,7 +22,17 @@ export default StyleSheet.create({
     height:225,
   
    },
-   button:{
-    marginTop:50
+   text_and_button:{
+
+      height:350,
+      width:250,
+      display:"flex",
+      justifyContent:"space-between",
+      marginTop:20
+   },
+   text_footer_container:{
+      marginTop:30,
+      display:"flex",
+      alignItems:"center"
    }
 });

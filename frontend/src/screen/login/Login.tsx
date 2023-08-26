@@ -15,19 +15,18 @@ export function Login({ navigation }) {
           />
         </View>
       </View>
-      <Button
-      style={Estilo.button}
-        icon='google'
-        textColor="white"
-        mode="contained"
-        onPress={() => console.log("Pressed")}
-      >
-       Login com o Google
-      </Button>
-      <View>
-        <Text>
-            Seja a diferença
-        </Text>
+      <View style={Estilo.text_and_button}>
+        <Button
+          icon="google"
+          textColor="white"
+          mode="contained"
+          onPress={() => console.log("Pressed")}
+        >
+          Login com o Google
+        </Button>
+        <View style={Estilo.text_footer_container}>
+          <Text style={{color:"white"}}>Seja a diferença</Text>
+        </View>
       </View>
     </View>
   );
