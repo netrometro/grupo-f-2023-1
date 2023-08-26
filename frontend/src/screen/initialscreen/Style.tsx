@@ -6,13 +6,13 @@ export default StyleSheet.create({
         flex:1,
         display:"flex",
         alignItems:"center",
-        justifyContent: "space-evenly"
+        justifyContent:"space-evenly"
        
     },
 
     container_image_text:{
         backgroundColor:"blue",
-        height:500,
+        height:400,
         width:350,
         borderRadius:20,
         display: "flex",
@@ -23,24 +23,30 @@ export default StyleSheet.create({
 
     container_image:{
         backgroundColor:"yellow",
-        height:370,
+        height:290,
         width:250
     },
     container_text:{
         backgroundColor:"purple",
-        height:100,
+        height:50,
         width:250
     },
 
     buttons_contaiener:{
         backgroundColor:"black",
-        height:200,
+        height:210,
         width:350,
+        display: "flex",
+        alignItems:"center",
+        justifyContent:"center",
+        gap:20
     },
-
+    buttons:{
+        width:200
+    },
     text_footer:{
         backgroundColor:"white",
-        height:80,
+        height:50,
         width:250
     }
 });

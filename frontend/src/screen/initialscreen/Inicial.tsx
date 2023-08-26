@@ -12,12 +12,24 @@ export function Inicial({ navigation }) {
 
         <View style={Estilo.container_text}></View>
       </View>
-      <View style = {Estilo.buttons_contaiener}>
+      <View style={Estilo.buttons_contaiener}>
+        <Button style = {Estilo.buttons}
+          icon="google"
+          mode="contained"
+          onPress={() => console.log("Pressed")}
+        >
+          Login
+        </Button>
+        <Button style = {Estilo.buttons}
+          icon="google"
+          mode="outlined"
+          onPress={() => console.log("Pressed")}
+        >
+          Cadastrar
+        </Button>
       </View>
 
-      <View style = {Estilo.text_footer}>
-     
-      </View>
+      <View style={Estilo.text_footer}></View>
     </View>
   );
 }
