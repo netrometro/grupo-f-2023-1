@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
     container:{
-        backgroundColor:"red",
+        backgroundColor:"#191924",
         flex:1,
         display:"flex",
         alignItems:"center",
@@ -11,7 +11,7 @@ export default StyleSheet.create({
     },
 
     container_image_text:{
-        backgroundColor:"blue",
+        backgroundColor:"#232231",
         height:400,
         width:350,
         borderRadius:20,
@@ -22,18 +22,32 @@ export default StyleSheet.create({
     },
 
     container_image:{
-        backgroundColor:"yellow",
-        height:290,
-        width:250
+        height:330,
+        width:300,
+        display:"flex",
+        alignItems:"center"
+    },
+
+    image:{
+        width:300,
+        height:330,
+        marginLeft:20
+    },
+
+    image_mais:{
+        width: 58,
+        height:50
     },
     container_text:{
-        backgroundColor:"purple",
-        height:50,
-        width:250
+        height:60,
+        width:250,
+        display:"flex",
+        flexDirection:"row",
+        justifyContent:"center",
+        alignItems:"center"
     },
 
     buttons_contaiener:{
-        backgroundColor:"black",
         height:210,
         width:350,
         display: "flex",
@@ -42,11 +56,15 @@ export default StyleSheet.create({
         gap:20
     },
     buttons:{
-        width:200
+        width:200,
+ 
     },
     text_footer:{
-        backgroundColor:"white",
+
         height:50,
-        width:250
+        width:250,
+        display: "flex",
+        alignItems:"center",
+        justifyContent:"center",
     }
 });
