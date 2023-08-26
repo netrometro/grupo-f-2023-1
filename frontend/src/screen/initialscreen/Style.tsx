@@ -6,6 +6,7 @@ export default StyleSheet.create({
         flex:1,
         display:"flex",
         alignItems:"center",
+        justifyContent: "space-evenly"
        
     },
 
@@ -13,7 +14,6 @@ export default StyleSheet.create({
         backgroundColor:"blue",
         height:500,
         width:350,
-        marginTop:20,
         borderRadius:20,
         display: "flex",
         alignItems:"center",
@@ -23,12 +23,24 @@ export default StyleSheet.create({
 
     container_image:{
         backgroundColor:"yellow",
-        height:320,
+        height:370,
         width:250
     },
     container_text:{
         backgroundColor:"purple",
-        height:150,
+        height:100,
+        width:250
+    },
+
+    buttons_contaiener:{
+        backgroundColor:"black",
+        height:200,
+        width:350,
+    },
+
+    text_footer:{
+        backgroundColor:"white",
+        height:80,
         width:250
     }
 });
