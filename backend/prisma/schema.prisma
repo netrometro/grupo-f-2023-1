@@ -11,6 +11,10 @@ datasource db {
 model Usuario {
   id Int @id @default(autoincrement())
   nome String
+  contato String
+  endereco String
+  senha String
+  email String @unique
 }
 
 
