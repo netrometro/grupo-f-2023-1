@@ -23,13 +23,25 @@ export default StyleSheet.create({
   
    },
    text_and_button:{
-
       height:350,
-      width:250,
+      width:280,
       display:"flex",
-      justifyContent:"space-between",
-      marginTop:20
+      marginTop:20,
+      justifyContent:"space-around",
+      alignItems:"center"
    },
+   input:{
+      backgroundColor:"#232231",
+      width:280,
+      height:50,
+      borderRadius:10,
+      borderWidth:1,
+      borderColor:"#7353ED",
+      paddingLeft:15,
+      color:"#808080",
+      
+ },
+
    text_footer_container:{
       marginTop:30,
       display:"flex",
