@@ -1,6 +1,4 @@
 
-
-
 export const firebaseConfig = {
   apiKey: "AIzaSyCssaJycnFeAP7KfT9bZfKPlzPqugaC9WA",
   authDomain: "doemais-fdf20.firebaseapp.com",

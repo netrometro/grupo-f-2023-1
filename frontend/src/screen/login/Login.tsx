@@ -1,19 +1,31 @@
 import { useNavigation } from "@react-navigation/native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, Image, TextInput, KeyboardAvoidingView, Alert } from "react-native";
 import Estilo from "./Style";
 import { Button } from "react-native-paper";
-import {getAuth, signInWithEmailAndPassword } from 'firebase/auth'
+import {initializeAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import{initializeApp} from 'firebase/app'
 import {firebaseConfig} from '../../config/firebase.config'
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
 
 export function Login({ navigation }) {
 
+ /*  useEffect(()=>{
+    const auth = getAuth();
+  onAuthStateChanged(auth, (user) => {
+  if (user) {
+    navigation.navigate('Home', {idUser: user.uid});
+  } 
+});
+  },[]) */
+
   const[email, setEmail] = React.useState('')
   const[senha, setSenha] = React.useState('')
+
 
   const app = initializeApp(firebaseConfig)
   const auth = getAuth(app)
@@ -24,7 +36,7 @@ export function Login({ navigation }) {
         console.log("usuário logado");
         const user = userCredential.user; // Agora você pode acessar a propriedade user
         console.log("Usuário:", user);
-        navigation.navigate('Home');
+        navigation.navigate('Home', {idUser: user.uid});
       })
       .catch((error) => {
         Alert.alert("Senha ou Email incorreto")
