@@ -1,12 +1,16 @@
-import { useNavigation } from "@react-navigation/native";
+import * as firebaseAuth from 'firebase/auth';
 import React, { useEffect } from "react";
 import { View, Text, Image } from "react-native";
 import Estilo from "./Style";
 import { Button } from "react-native-paper";
-import { initializeAuth, getReactNativePersistence, getAuth, onAuthStateChanged } from 'firebase/auth';
+import { initializeAuth, getAuth, onAuthStateChanged } from 'firebase/auth';
+import { getReactNativePersistence } from '../../config/persistUser';
+
 import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage';
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "../../config/firebase.config";
+
+
 
 export function Inicial({ navigation }) {
   

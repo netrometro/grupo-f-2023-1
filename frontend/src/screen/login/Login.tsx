@@ -14,15 +14,6 @@ import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage';
 
 export function Login({ navigation }) {
 
- /*  useEffect(()=>{
-    const auth = getAuth();
-  onAuthStateChanged(auth, (user) => {
-  if (user) {
-    navigation.navigate('Home', {idUser: user.uid});
-  } 
-});
-  },[]) */
-
   const[email, setEmail] = React.useState('')
   const[senha, setSenha] = React.useState('')
 
