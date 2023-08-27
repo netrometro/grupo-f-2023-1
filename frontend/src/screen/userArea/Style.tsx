@@ -10,7 +10,7 @@ export default StyleSheet.create({
         
     },
     container_son:{
-        flex: .4,
+        flex: .6,
         backgroundColor:"#7353ED",
         alignItems:"center",
         borderBottomLeftRadius:60,

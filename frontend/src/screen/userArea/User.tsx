@@ -1,11 +1,12 @@
 import React from "react";
 import estilo from "./Style";
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, SafeAreaView } from "react-native";
 import { Button } from "react-native-paper";
 import { getAuth, signOut } from "firebase/auth";
 import { useNavigation } from "@react-navigation/native";
+import { UserProducts } from "./UserProducts";
 
-export function User() {
+export  function User() {
   const navigation = useNavigation();
   function logout() {
     const auth = getAuth();
@@ -26,8 +27,12 @@ export function User() {
         <Text style = {estilo.user_text_info}>David Emmanoel Lopes Rocha</Text>
         <Text>manoeudavi3@gmail.com</Text>
         <Text>(87) 9 96269050</Text>
-        <Text>(87) Garanhuns, PE, Brasil</Text>
+        <Text>Garanhuns, PE, Brasil</Text>
       </View>
+      <Text style={{color:"white"}}>Meus produtos</Text>
+      <SafeAreaView style={{ height:200}}>
+        <UserProducts  />
+      </SafeAreaView>
        <Button style={estilo.buttonLogout} mode="contained" onPress={() => {}}>
         Editar Perfil
       </Button>
