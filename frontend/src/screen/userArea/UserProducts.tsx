@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, FlatList, StyleSheet, Dimensions  } from 'react-native';
+import { View, Text, FlatList, StyleSheet, Dimensions, TouchableOpacity  } from 'react-native';
+import { Feather } from '@expo/vector-icons'; 
 
 
 const {width} = Dimensions.get("window")
@@ -15,13 +16,15 @@ export const UserProducts = () => {
 
   const renderItem = ({ item }) => (
     <View style={styles.container}>
-      <Text>{item.text}</Text>
+      <Text>{item.text}</Text> 
+      <TouchableOpacity style={styles.delete}>
+      <Feather name="trash-2" size={24} color="#D65353" />
+      </TouchableOpacity>
     </View>
   );
 
   return (
     <FlatList
-      style={styles.fat}
       data={data}
       keyExtractor={(item) => item.key}
       horizontal
@@ -44,13 +47,21 @@ const styles = StyleSheet.create({
         backgroundColor:"#232231",
         marginHorizontal:10,
         borderRadius:12,
-        padding:20,
         borderWidth:1,
-        borderColor:"#7353ED"
+        borderColor:"#7353ED",
+        display:"flex",
+        flexDirection:"row",
+        justifyContent:"space-between"
     },
-    fat:{
-        
-     
-        
+    delete:{
+        width:50,
+        height:50,
+
+        alignSelf:"center",
+        borderRadius:360,
+        marginRight:10,
+        display:"flex",
+        alignItems:"center",
+        justifyContent:"center"
     }
   });

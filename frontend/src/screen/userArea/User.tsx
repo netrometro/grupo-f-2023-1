@@ -57,7 +57,7 @@ export function User() {
             logout();
           }}
         >
-          Sair
+          Logout
         </Button>
       </View>
     </View>
