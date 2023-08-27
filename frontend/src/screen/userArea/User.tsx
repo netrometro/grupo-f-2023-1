@@ -6,7 +6,7 @@ import { getAuth, signOut } from "firebase/auth";
 import { useNavigation } from "@react-navigation/native";
 import { UserProducts } from "./UserProducts";
 
-export  function User() {
+export function User() {
   const navigation = useNavigation();
   function logout() {
     const auth = getAuth();
@@ -23,23 +23,43 @@ export  function User() {
   return (
     <View style={estilo.container}>
       <View style={estilo.container_son}>
-        <Image style={estilo.userImage} source={require("../../assets/david.jpg")}></Image>
-        <Text style = {estilo.user_text_info}>David Emmanoel Lopes Rocha</Text>
+        <Image
+          style={estilo.userImage}
+          source={require("../../assets/david.jpg")}
+        ></Image>
+        <Text style={estilo.user_text_info}>David Emmanoel Lopes Rocha</Text>
         <Text>manoeudavi3@gmail.com</Text>
         <Text>(87) 9 96269050</Text>
         <Text>Garanhuns, PE, Brasil</Text>
       </View>
-      <Text style={{color:"white"}}>Meus produtos</Text>
-      <SafeAreaView style={{ height:200}}>
-        <UserProducts  />
+      <Text
+        style={{
+          color: "white",
+          alignSelf: "flex-start",
+          marginLeft: 30,
+          marginBottom: 20,
+        }}
+      >
+        Minhas doações:{" "}
+      </Text>
+      <SafeAreaView style={{ height: 200 }}>
+        <UserProducts />
       </SafeAreaView>
-       <Button style={estilo.buttonLogout} mode="contained" onPress={() => {}}>
-        Editar Perfil
-      </Button>
-      <Button buttonColor="#D65353" style={estilo.buttonLogout} mode="contained" onPress={() => {logout()}}>
-        Sair da Conta
-      </Button>
-     
+      <View style={estilo.button_container}>
+        <Button style={estilo.buttonLogout} mode="contained" onPress={() => {}}>
+          Editar Perfil
+        </Button>
+        <Button
+          buttonColor="#D65353"
+          style={estilo.buttonLogout}
+          mode="contained"
+          onPress={() => {
+            logout();
+          }}
+        >
+          Sair
+        </Button>
+      </View>
     </View>
   );
 }

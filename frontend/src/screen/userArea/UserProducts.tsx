@@ -41,10 +41,12 @@ const styles = StyleSheet.create({
     container:{
         width:width*0.8 - 20,
         height:width/2.6,
-        backgroundColor:"red",
+        backgroundColor:"#232231",
         marginHorizontal:10,
         borderRadius:12,
-        padding:20
+        padding:20,
+        borderWidth:1,
+        borderColor:"#7353ED"
     },
     fat:{
         

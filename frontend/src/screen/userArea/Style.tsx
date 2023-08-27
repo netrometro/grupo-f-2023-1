@@ -38,11 +38,14 @@ export default StyleSheet.create({
         height:40,
 
     },
-    buttonEdit:{
-        width:200,
-        marginTop:50
-    },
+  
     buttonLogout:{
-        width:200,
+        width:130,
+      
+    },
+    button_container:{
+        display:"flex",
+        flexDirection:"row",
+        gap:50
     }
 })
