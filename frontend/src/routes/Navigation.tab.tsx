@@ -4,6 +4,8 @@ import { DonateArea } from '../screen/donateItens/DonateArea';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MyItens } from '../screen/myItens/MyArea';
 import { Feather } from '@expo/vector-icons'; 
+import { AntDesign } from '@expo/vector-icons'
+import { User } from '../screen/userArea/User';
 
 
 const Tab = createBottomTabNavigator()
@@ -28,8 +30,6 @@ export default function TabComponent() {
           height: 50,
         },
       }}
-      
-     
       > 
           <Tab.Screen
            name='Produtos'
@@ -49,8 +49,8 @@ export default function TabComponent() {
           options={{
             tabBarIcon: ({focused}) => 
             focused
-            ? <Feather name="user" size={30}  color="#7353ED"  />
-            : <Feather name="user" size={24}  color="#808080"  />,
+            ? <AntDesign name="car" size={30}  color="#7353ED"  />
+            : <AntDesign name="car" size={24}  color="#808080"  />,
             headerShown:false,
      
           }}      
@@ -63,6 +63,18 @@ export default function TabComponent() {
             focused
             ? <Feather name="plus-square" size={30}  color="#7353ED"  />
             : <Feather name="plus-square" size={24}  color="#808080"  />,
+            headerShown:false,
+     
+          }}      
+          ></Tab.Screen>
+           <Tab.Screen 
+          name='Meu perfil'
+          component={User}
+          options={{
+            tabBarIcon: ({focused}) => 
+            focused
+            ? <Feather name="user" size={30}  color="#7353ED"  />
+            : <Feather name="user" size={24}  color="#808080"  />,
             headerShown:false,
      
           }}      
