@@ -4,20 +4,18 @@ import { Inicial } from '../screen/initialscreen/Inicial';
 import { Login } from '../screen/login/Login';
 import { SignIn } from '../screen/signin/SignIn';
 import TabComponent from './Navigation.tab';
-import { initializeApp } from 'firebase/app';
-import { firebaseConfig } from '../config/firebase.config';
+
 
 
 const Stack = createNativeStackNavigator()
 
 export default function StackComponent() {
   
-const app = initializeApp(firebaseConfig)
 
   return (
       <Stack.Navigator initialRouteName='Inicial'> 
           <Stack.Screen 
-          name='Tela Inicial' 
+          name='TelaInicial' 
           component={Inicial}
           options={{
             headerShown:false

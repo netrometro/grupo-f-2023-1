@@ -11,7 +11,7 @@ import { firebaseConfig } from "../../config/firebase.config";
 export function Inicial({ navigation }) {
   
 
-
+  
   //Verificar e o usuário está conectado.
   //Se sim, vai direto para a home
   const app = initializeApp(firebaseConfig)
@@ -23,8 +23,6 @@ export function Inicial({ navigation }) {
   onAuthStateChanged(auth, (user) => {
   if (user) {
     navigation.navigate('Home', {idUser: user.uid});
-  } else{
-    navigation.navigate("Inicial")
   }
 });
   },[])

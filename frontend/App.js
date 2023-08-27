@@ -14,6 +14,12 @@ import Navegation from './src/routes';
   Ou seja, iremos pular de uma página para outra usando a navegação Stack Navigator do "react-navigation"
 */
 
+/*
+Como será a rota: 
+<StackNavigator/> ( Screen1 =Tela incial, Screen2 =Tela de login, screen3 =Tela de cadastro, screen4=<TabNavigator/>(screen1 = Home, screen2 = MeusItens, screen3 = Doações, screen4 =Usuario)) Assim que está a organização das minhas rotas.
+
+*/
+
 export default function App() {
   return <Navegation/>
   
