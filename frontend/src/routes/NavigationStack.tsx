@@ -5,21 +5,14 @@ import { Login } from '../screen/login/Login';
 import { SignIn } from '../screen/signin/SignIn';
 import TabComponent from './Navigation.tab';
 import { initializeApp } from 'firebase/app';
-import { getAuth, initializeAuth, onAuthStateChanged } from 'firebase/auth';
 import { firebaseConfig } from '../config/firebase.config';
-import { useEffect } from 'react';
-import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage';
-
-
-
 
 
 const Stack = createNativeStackNavigator()
 
 export default function StackComponent() {
   
-
-  const app = initializeApp(firebaseConfig)
+const app = initializeApp(firebaseConfig)
 
   return (
       <Stack.Navigator initialRouteName='Inicial'> 
