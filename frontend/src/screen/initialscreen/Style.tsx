@@ -60,12 +60,5 @@ export default StyleSheet.create({
         width:200,
  
     },
-    text_footer:{
-
-        height:50,
-        width:250,
-        display: "flex",
-        alignItems:"center",
-        justifyContent:"center",
-    }
+    
 });
