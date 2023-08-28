@@ -36,3 +36,13 @@ export async function deleteProductById(productId: number) {
     return deletedProduct;
 }
 
+
+//Listar produto de acordo com o dono
+export async function getProductByItsUser(identificadoUsuario: string) {
+    const getProducts = await prisma.produto.findMany({
+        where: {
+            identificadoUsuario,
+        },
+    });
+    return getProducts;
+}

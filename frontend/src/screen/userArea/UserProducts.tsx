@@ -1,27 +1,43 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, StyleSheet, Dimensions, TouchableOpacity  } from 'react-native';
 import { Feather } from '@expo/vector-icons'; 
-
-
+import axios from 'axios';
+import { MEU_IP } from '../../config';
+import { getAuth } from 'firebase/auth';
 
 
 const {width} = Dimensions.get("window")
 
 export const UserProducts = () => {
 
+  const [data, setData] = useState([]);
+  const auth = getAuth();
+  const user = auth.currentUser;
+
+  
+
+  // Função para buscar dados via Axios
+  const fetchData = async () => {
+    try {
+      const response = await axios.get( `http://192.168.0.100:3000/api/produto/user/${user.uid}`);
+      setData(response.data); // Atualize o estado com os novos dados
+      return response.data;
+    } catch (error) {
+      console.error('Erro ao buscar dados:', error);
+    }
+  };
 
 
-  // Seus dados de exemplo
-  const data = [
-    { key: '1', text: 'Item 1' },
-    { key: '2', text: 'Item 2' },
-    { key: '3', text: 'Item 3' },
-    // Adicione mais itens conforme necessário
-  ];
+   // Execute a função de busca de dados quando o componente for montado
+   useEffect(() => {
+    fetchData();
+  }, []); // O segundo argumento vazio assegura que a chamada é feita apenas uma vez, no montagem do componente.
+
+
 
   const renderItem = ({ item }) => (
     <View style={styles.container}>
-      <Text>{item.text}</Text> 
+      <Text>{item.titulo}</Text> 
       <TouchableOpacity
       onPress={()=>{}} style={styles.delete}>
       <Feather name="trash-2" size={24} color="#D65353" />
@@ -32,7 +48,7 @@ export const UserProducts = () => {
   return (
     <FlatList
       data={data}
-      keyExtractor={(item) => item.key}
+      keyExtractor={(data) => data.id}
       horizontal
       renderItem={renderItem}
       showsHorizontalScrollIndicator={false}

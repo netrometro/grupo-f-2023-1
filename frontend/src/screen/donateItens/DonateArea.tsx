@@ -4,11 +4,14 @@ import { RadioButton, Button  } from "react-native-paper";
 import Estilo from "./Styles";
 import axios from "axios"
 import { MEU_IP } from "../../config";
+import { getAuth, signOut } from "firebase/auth";
 
 export function DonateArea() {
   const [title, setTitle] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [description, setDescription] = useState("");
+  const auth = getAuth();
+  const user = auth.currentUser;
 
 
   const handleDonation = () => {
@@ -16,6 +19,7 @@ export function DonateArea() {
       titulo:title,
       categoriaId: Number(selectedCategory),
       descricao:description,
+      identificadoUsuario:user.uid
     };
 
     axios

@@ -1,6 +1,6 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { CreateProductImput } from "../schema/produtos.schema";
-import { createProducts, deleteProductById, findProducts, findProductsByCategory } from "../repository/produtos.repositories";
+import { createProducts, deleteProductById, findProducts, findProductsByCategory, getProductByItsUser } from "../repository/produtos.repositories";
 
 //Criar produtos
 export async function createProductsHandler(request: FastifyRequest<{Body: CreateProductImput}>, reply: FastifyReply){
@@ -65,5 +65,24 @@ export async function deleteProductsHandler(request: FastifyRequest<{ Params: De
   } catch (error) {
     console.log("Erro ao deletar o produto: " + error);
     return reply.code(500).send({ mensage: "Um erro ocorreu ao deletar o produto"});
+  }
+}
+
+
+//Buscar produto pelo seu dono
+
+interface identificadorParams {
+  identificadoUsuario: string;
+}
+
+export async function getProductsUser(request: FastifyRequest<{ Params: identificadorParams }>, reply: FastifyReply){
+  try {
+    const produto = await getProductByItsUser(request.params.identificadoUsuario)
+    reply.status(200).send(produto);
+    
+  } catch (error) {
+    console.log("Erro ao buscar o produto pelo seu dono: " + error)
+    return reply.code(500).send({ mensage: "Um erro ocorreu ao buscar o produto"});
+
   }
 }

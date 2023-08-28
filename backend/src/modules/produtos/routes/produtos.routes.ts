@@ -1,5 +1,5 @@
 import { FastifyInstance } from "fastify";
-import { createProductsHandler, getAllProducts, getProducByCategory, deleteProductsHandler } from "../controller/produtos.controller";
+import { createProductsHandler, getAllProducts, getProducByCategory, deleteProductsHandler, getProductsUser } from "../controller/produtos.controller";
 
 
 async function productRoutes(server: FastifyInstance){
@@ -11,6 +11,8 @@ async function productRoutes(server: FastifyInstance){
     server.get("/:categoryId", getProducByCategory)
      //deletar produto por id
     server.delete("/:productId", deleteProductsHandler)
+    //Pegar produtos pelo id do usuário
+    server.get("/user/:identificadoUsuario", getProductsUser)
 }
 
 export default productRoutes
