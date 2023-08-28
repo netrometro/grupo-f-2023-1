@@ -74,16 +74,6 @@ export function SignIn({navigation}) {
         >
           Cadastrar
         </Button>
-        <Text style={{ color: "white" }}>Ou</Text>
-        <Button
-        style = {{width:230}}
-          icon="google"
-          textColor="white"
-          mode="contained"
-          onPress={() => console.log("Pressed")}
-        >
-          Cadastre com o Google
-        </Button>
       </View>
     </KeyboardAvoidingView>
   );

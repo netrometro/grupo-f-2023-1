@@ -71,16 +71,6 @@ export function Login({ navigation }) {
         >
           Login
         </Button>
-        <Text style={{ color: "white" }}>Ou</Text>
-        <Button
-        style = {{width:230}}
-          icon="google"
-          textColor="white"
-          mode="contained"
-          onPress={() => console.log("Pressed")}
-        >
-          Login com o Google
-        </Button>
       </View>
     </KeyboardAvoidingView>
   );

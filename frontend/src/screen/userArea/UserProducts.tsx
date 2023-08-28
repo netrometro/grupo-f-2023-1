@@ -3,9 +3,14 @@ import { View, Text, FlatList, StyleSheet, Dimensions, TouchableOpacity  } from 
 import { Feather } from '@expo/vector-icons'; 
 
 
+
+
 const {width} = Dimensions.get("window")
 
 export const UserProducts = () => {
+
+
+
   // Seus dados de exemplo
   const data = [
     { key: '1', text: 'Item 1' },
@@ -17,7 +22,8 @@ export const UserProducts = () => {
   const renderItem = ({ item }) => (
     <View style={styles.container}>
       <Text>{item.text}</Text> 
-      <TouchableOpacity style={styles.delete}>
+      <TouchableOpacity
+      onPress={()=>{}} style={styles.delete}>
       <Feather name="trash-2" size={24} color="#D65353" />
       </TouchableOpacity>
     </View>

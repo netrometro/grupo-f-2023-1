@@ -7,8 +7,18 @@ import { useNavigation } from "@react-navigation/native";
 import { UserProducts } from "./UserProducts";
 import { Feather } from '@expo/vector-icons'
 
+
 export function User() {
+
+  //Pegando o email do usuário por uma instancia
+  const auth = getAuth();
+  const user = auth.currentUser;
+
+  //Instancia do navigation
   const navigation = useNavigation();
+
+
+ //Função para fazer o logout
   function logout() {
     const auth = getAuth();
     signOut(auth)
@@ -33,7 +43,7 @@ export function User() {
        <Feather  name="user" size={24} color="#808080"  />
        </View>
         <Text style={estilo.user_text_info}>David Emmanoel Lopes Rocha</Text>
-        <Text>manoeudavi3@gmail.com</Text>
+        <Text>{user.email}</Text>
         <Text>(87) 9 96269050</Text>
         <Text>Garanhuns, PE, Brasil</Text>
       </View>
