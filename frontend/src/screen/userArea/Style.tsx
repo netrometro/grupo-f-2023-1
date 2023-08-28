@@ -19,12 +19,15 @@ export default StyleSheet.create({
         justifyContent:"space-evenly",
         marginBottom:30
     },
-    userImage:{
-        width:120,
-        height:120,
-        borderRadius:100,
-        borderWidth:2,
-        borderColor:"#232231"
+    userPhoto:{
+       width:100,
+       height:100,
+       borderRadius:360,
+       backgroundColor:"#191924",
+       display:"flex",
+       alignItems:"center",
+       justifyContent:"center",
+       marginTop:10
     },
 
     user_text_info:{

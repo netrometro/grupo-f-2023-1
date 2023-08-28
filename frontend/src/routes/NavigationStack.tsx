@@ -4,6 +4,8 @@ import { Inicial } from '../screen/initialscreen/Inicial';
 import { Login } from '../screen/login/Login';
 import { SignIn } from '../screen/signin/SignIn';
 import TabComponent from './Navigation.tab';
+import { User } from '../screen/userArea/User';
+import { Perfil } from '../screen/perfilArea/Perfil';
 
 
 
@@ -52,6 +54,15 @@ export default function StackComponent() {
           component={TabComponent}
           options={{
             headerShown:false
+          }}
+        ></Stack.Screen> 
+
+        <Stack.Screen
+          name='Perfil'
+          component={Perfil}
+          options={{
+            title:"",
+  
           }}
         ></Stack.Screen> 
       </Stack.Navigator>    
