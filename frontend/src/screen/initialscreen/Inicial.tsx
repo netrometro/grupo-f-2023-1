@@ -11,8 +11,7 @@ import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "../../config/firebase.config";
 
 export function Inicial({ navigation }) {
-  //Verificar e o usuário está conectado.
-  //Se sim, vai direto para a home
+
   const app = initializeApp(firebaseConfig);
   const auth = initializeAuth(app, {
     persistence: getReactNativePersistence(ReactNativeAsyncStorage),
@@ -25,6 +24,9 @@ export function Inicial({ navigation }) {
       }
     });
   }, []);
+
+
+  
 
   return (
     <View style={Estilo.container}>
