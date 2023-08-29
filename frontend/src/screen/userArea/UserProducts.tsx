@@ -103,6 +103,7 @@ export const UserProducts = () => {
                 selectionColor={"#7353ED"}
                 style={Estilo.tituloImput}
                 value={titulo}
+                onChangeText={setTitulo}
               />
             </View>
   
@@ -139,6 +140,7 @@ export const UserProducts = () => {
                 selectionColor={"#7353ED"}
                 style={Estilo.descricaoImput}
                 value={descricao}
+                onChangeText={setDescricao}
               />
             </View>
   
