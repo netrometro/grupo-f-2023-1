@@ -1,6 +1,6 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { CreateProductImput } from "../schema/produtos.schema";
-import { createProducts, deleteProductById, findProducts, findProductsByCategory, getProductByItsUser } from "../repository/produtos.repositories";
+import { ProdutoUpdateData, atualiza, createProducts, deleteProductById, findProducts, findProductsByCategory, getProductByItsUser } from "../repository/produtos.repositories";
 
 //Criar produtos
 export async function createProductsHandler(request: FastifyRequest<{Body: CreateProductImput}>, reply: FastifyReply){
@@ -88,3 +88,23 @@ export async function getProductsUser(request: FastifyRequest<{ Params: identifi
 
   }
 }
+
+  //Atualizar produtos
+
+  interface ProductsParams{
+    id:string
+    body: ProdutoUpdateData
+  }
+
+
+  export async function updateProducts(request: FastifyRequest<{ Params: ProductsParams }>, reply: FastifyReply) {
+    try {
+      const productId = parseInt(request.params.id, 10);
+      const products = request.body as ProdutoUpdateData; 
+  
+      const productUpdated = atualiza(productId, products);
+      reply.status(200).send(productUpdated);
+    } catch (error) {
+      console.log("Erro ao atualizar o produto: " + error);
+    }
+  }

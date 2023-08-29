@@ -2,6 +2,7 @@ import prisma from "../../../utils/prisma";
 import { CreateProductImput } from "../schema/produtos.schema";
 
 
+
 //criar produto
 export async function createProducts(data:CreateProductImput){
     const produto = await prisma.produto.create({
@@ -45,4 +46,23 @@ export async function getProductByItsUser(identificadoUsuario: string) {
         },
     });
     return getProducts;
+}
+
+
+//Atualizar os produtos
+
+export interface ProdutoUpdateData {
+  titulo: string;
+  descricao: string;
+  categoriaId: number;
+}
+
+export async function atualiza(id:number, dados:ProdutoUpdateData){
+  const produtos = await prisma.produto.update({
+    where:{
+      id
+    },
+    data: dados
+  })
+  return produtos
 }
