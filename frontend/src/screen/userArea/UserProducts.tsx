@@ -33,7 +33,7 @@ export const UserProducts = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `http://192.168.0.100:3000/api/produto/user/${user.uid}`
+        `http://192.168.0.109:3000/api/produto/user/${user.uid}`
       );
       setData(response.data);
     } catch (error) {

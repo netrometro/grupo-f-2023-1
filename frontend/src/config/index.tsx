@@ -1,1 +1,1 @@
-export const MEU_IP = "http://192.168.0.100:3000"
+export const MEU_IP = "http://192.168.0.109:3000"
