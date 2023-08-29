@@ -10,7 +10,7 @@ async function productRoutes(server: FastifyInstance){
      //buscar produto por categoria
     server.get("/:categoryId", getProducByCategory)
      //deletar produto por id
-    server.delete("/:productId", deleteProductsHandler)
+    server.delete("/:id", deleteProductsHandler)
     //Pegar produtos pelo id do usuário
     server.get("/user/:identificadoUsuario", getProductsUser)
 }

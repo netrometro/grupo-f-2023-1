@@ -48,11 +48,13 @@ export async function getProducByCategory(request: FastifyRequest<{ Params: Cate
    }
 }
 
+//Deletar
+
 interface DelProductParams {
-  productId: string;
+ id: string;
 }
 export async function deleteProductsHandler(request: FastifyRequest<{ Params: DelProductParams }>, reply: FastifyReply) {
-  const productId = parseInt(request.params.productId, 10);
+  const productId = parseInt(request.params.id, 10);
 
   try {
     const deletedProduct = await deleteProductById(productId);

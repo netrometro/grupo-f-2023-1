@@ -1,4 +1,3 @@
-import * as firebaseAuth from "firebase/auth";
 import React, { useEffect } from "react";
 import { View, Text, Image } from "react-native";
 import Estilo from "./Style";
@@ -24,8 +23,6 @@ export function Inicial({ navigation }) {
       }
     });
   }, []);
-
-
   
 
   return (

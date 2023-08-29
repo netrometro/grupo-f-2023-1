@@ -27,10 +27,10 @@ export async function findProductsByCategory(categoriaId:number){
 
 //deletar produto pelo id
 
-export async function deleteProductById(productId: number) {
+export async function deleteProductById(id: number) {
     const deletedProduct = await prisma.produto.delete({
         where:{
-            id: productId,
+            id
         }
     })
     return deletedProduct;
