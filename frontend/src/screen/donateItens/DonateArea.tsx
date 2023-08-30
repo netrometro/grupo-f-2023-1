@@ -26,7 +26,7 @@ export function DonateArea() {
     };
     
     axios
-      .post(`https://doemais.onrender.com/api/produto`, formData)
+      .post(`${MEU_IP}/api/produto`, formData)
       .then((response) => {
         console.log("Doação enviada com sucesso", response.data);
       })
