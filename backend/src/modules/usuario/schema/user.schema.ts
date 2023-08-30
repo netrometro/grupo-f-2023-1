@@ -10,7 +10,23 @@ const createUserSchema = z.object({
     nome: z.string({
         required_error: 'O nome do usuário é obrigatório',
         invalid_type_error: 'O tipo -nome- tem que ser uma string' //-> Caso você passe um tipo diferente do que o esperado
-    })
+    }),
+    email: z.string({
+        required_error: 'O nome do usuário é obrigatório',
+        invalid_type_error: 'O tipo -nome- tem que ser uma string' //-> Caso você passe um tipo diferente do que o esperado
+    }),
+    contato: z.string({
+        required_error: 'O nome do usuário é obrigatório',
+        invalid_type_error: 'O tipo -nome- tem que ser uma string' //-> Caso você passe um tipo diferente do que o esperado
+    }),
+    endereco: z.string({
+        required_error: 'O nome do usuário é obrigatório',
+        invalid_type_error: 'O tipo -nome- tem que ser uma string' //-> Caso você passe um tipo diferente do que o esperado
+    }),
+    id: z.string({
+        required_error: 'O nome do usuário é obrigatório',
+        invalid_type_error: 'O tipo -nome- tem que ser uma string' //-> Caso você passe um tipo diferente do que o esperado
+    }),
 
     //Outras validações aqui:  
 }) 
