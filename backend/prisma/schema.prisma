@@ -31,4 +31,5 @@ model Produto {
   categoria   Categoria @relation(fields: [categoriaId], references: [id])
   categoriaId Int
   identificadoUsuario String  //Identificar o produto pelo o id do usuário que estiver logado
+  destinoEntrega String? 
 }

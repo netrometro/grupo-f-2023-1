@@ -103,5 +103,32 @@ export default StyleSheet.create({
     backgroundColor:"#7353ED",
     width:250,
     height:45,
-  }
+  },
+
+  distanciaContainer: {
+    marginTop: 20,
+  },
+
+  distanciaText: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "#fff",
+  },
+
+  distanciaTextt: {
+    fontSize: 10,
+    fontWeight: "bold",
+    color: "#fff",
+  },
+
+  distanciaInput: {
+    marginTop: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderWidth: 1,
+    borderColor: "#ccc",
+    borderRadius: 5,
+    color: "#fff",
+  },
+
 });
