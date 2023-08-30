@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import estilo from "./Style";
 import { View, Text, Image, SafeAreaView, Modal } from "react-native";
 import { Button } from "react-native-paper";
@@ -6,6 +6,8 @@ import { getAuth, signOut } from "firebase/auth";
 import { useNavigation } from "@react-navigation/native";
 import { UserProducts } from "./UserProducts";
 import { Feather } from '@expo/vector-icons'
+import axios from "axios";
+import { MEU_IP } from "../../config";
 
 
 export function User() {
@@ -42,6 +44,43 @@ export function User() {
      // @ts-ignore
     navigation.navigate("Perfil")
   }
+
+  //Função para fazer GET do usuário logado
+  async function getUserData() {
+    try{
+
+      const apiUrl = `${MEU_IP}/api/usuario/${user.uid}`;
+    
+      // Faz uma requisição GET para a API usando o Axios
+      const response = await axios.get(apiUrl);
+
+      const userData: UsuarioData = response.data;
+
+      // Retorna os dados da resposta da API
+      return userData;
+
+    } catch (error) {
+      console.log("Problema do axios: " + error)
+      throw error
+    }
+  }
+  
+  useEffect(() => {
+    async function carregarUsuario() {
+      try {
+        setInterval(async()=>{
+          if (!user) {
+            const userData = await getUserData();
+            setUsuario(userData);
+          }
+        },1000)
+      } catch (error) {
+        console.error('Erro ao carregar produtos:', error);
+      }
+    }
+
+    carregarUsuario();
+  }, [user]);
 
   return (
     <View style={estilo.container}>
