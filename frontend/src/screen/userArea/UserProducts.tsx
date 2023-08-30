@@ -40,7 +40,7 @@ export const UserProducts = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `http://192.168.0.109:3000/api/produto/user/${user.uid}`
+        `https://doemais.onrender.com/api/produto/user/${user.uid}`
       );
       setData(response.data);
     } catch (error) {
@@ -56,7 +56,7 @@ export const UserProducts = () => {
 
   const deleteItem = async (itemId) => {
     try {
-      await axios.delete(`http://192.168.0.100:3000/api/produto/${itemId}`);
+      await axios.delete(`https://doemais.onrender.com/api/produto/${itemId}`);
       // After successful deletion, you can update the state to re-render the list
       fetchData();
     } catch (error) {
@@ -77,7 +77,7 @@ export const UserProducts = () => {
   async function updateProducts(id, dados) {
     try {
       // Espere pela conclusão da solicitação HTTP
-      await axios.put(`http://192.168.0.100:3000/api/produto/${id}`, dados);
+      await axios.put(`https://doemais.onrender.com/api/produto/${id}`, dados);
       setId("")
       setModalVisible(false);
       // Após a atualização bem-sucedida, você pode atualizar o estado ou fazer outras ações, se necessário.
