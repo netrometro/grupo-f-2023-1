@@ -1,5 +1,5 @@
 import {FastifyRequest, FastifyReply} from "fastify"
-import { createUser, findUsers } from "../repositories/user.repository"
+import { createUser, findUsers, findUsersById } from "../repositories/user.repository"
 import { createUserInput } from "../schema/user.schema"
 
 
@@ -22,3 +22,21 @@ export async function getUsersHandler(){
     const users = await findUsers()
     return users
 }
+
+//Buscar usuário pelo seu ID
+
+export interface identificadorUser {
+   id: string;
+ }
+ 
+ export async function getUser(request: FastifyRequest<{ Params: identificadorUser }>, reply: FastifyReply){
+   try {
+     const produto = await findUsersById(request.params.id)
+     reply.status(200).send(produto);
+     
+   } catch (error) {
+     console.log("Erro ao buscar o usuário: " + error)
+     return reply.code(500).send({ mensage: "Um erro ao buscar o usuário"});
+ 
+   }
+ }
