@@ -1,1 +1,1 @@
-export const MEU_IP = "https://doemais.onrender.com"
+export const MEU_IP = "https://doemais.onrender.com" 
