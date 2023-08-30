@@ -17,6 +17,13 @@ export function User() {
   //Instancia do navigation
   const navigation = useNavigation();
 
+  interface UsuarioData {
+    nome: string;
+    contato: string;
+    endereco: string;
+  }
+
+  const [usuario, setUsuario] = useState({});
 
  //Função para fazer o logout
   function logout() {
