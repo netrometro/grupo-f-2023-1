@@ -115,6 +115,12 @@ export default StyleSheet.create({
     color: "#fff",
   },
 
+  distanciaTextt: {
+    fontSize: 10,
+    fontWeight: "bold",
+    color: "#fff",
+  },
+
   distanciaInput: {
     marginTop: 10,
     paddingHorizontal: 10,

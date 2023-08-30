@@ -11,7 +11,8 @@ export function DonateArea() {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [description, setDescription] = useState("");
   const [isTransportSelected, setIsTransportSelected] = useState(false);
-  const [distance, setDistance] = useState("");
+  const [destino, setDestino] = useState("");
+  const [gasolina, setGasolina] = useState("");
   const auth = getAuth();
   const user = auth.currentUser;
 
@@ -21,11 +22,11 @@ export function DonateArea() {
       categoriaId: Number(selectedCategory),
       descricao: description,
       identificadoUsuario: user.uid,
-      distancia: isTransportSelected ? Number(distance) : null
+      destinoEntrega: destino         //isTransportSelected ? Number(distance) : null
     };
-
+    
     axios
-      .post(`${MEU_IP}/api/produto`, formData)
+      .post(`http://localhost:3000/api/produto`, formData)
       .then((response) => {
         console.log("Doação enviada com sucesso", response.data);
       })
@@ -36,8 +37,10 @@ export function DonateArea() {
     setTitle("");
     setSelectedCategory("");
     setDescription("");
-    setDistance("");
+    setDestino("");
   };
+
+  
 
   return (
     <View style={Estilo.container}>
@@ -46,7 +49,7 @@ export function DonateArea() {
         <TextInput
           selectionColor={'#7353ED'}
           style={Estilo.tituloImput}
-          value={title}
+          value={ title}
           onChangeText={setTitle}
         />
       </View>
@@ -110,20 +113,23 @@ export function DonateArea() {
 
 {isTransportSelected && selectedCategory === "5" && (
   <View style={Estilo.distanciaContainer}>
-    <Text style={Estilo.distanciaText}>Distância em Km:</Text>
+    <Text style={Estilo.distanciaTextt}>Coloque o seu destino e descreva quais produtos voce pode entregar</Text>
+    <Text style={Estilo.distanciaText}>Destino:</Text>
     <TextInput
       selectionColor={'#7353ED'}
       style={Estilo.distanciaInput}
-      value={distance}
+      value={destino}
       onChangeText={text => {
         // Verifica se o texto inserido é um número
-        if (/^\d+$/.test(text) || text === '') {
-          setDistance(text);
-        }
+        
+          setDestino(text);
       }}
       keyboardType="numeric"
     />
+    
   </View>
+
+  
 )}
 
       
