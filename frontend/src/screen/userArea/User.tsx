@@ -88,10 +88,15 @@ export function User() {
        <View style={estilo.userPhoto}>
        <Feather  name="user" size={24} color="#808080"  />
        </View>
-        <Text style={estilo.user_text_info}>David Emmanoel Lopes Rocha</Text>
+        {/* <Text style={estilo.user_text_info}>{usuario.nome}</Text> */}
+        {usuario.nome ? (
+          <Text style={estilo.user_text_info}>{usuario.nome}</Text>
+        ) : (
+          <Text>Nenhum usuário cadastrado.</Text>
+        )}
         <Text>{user.email}</Text>
-        <Text>(87) 9 96269050</Text>
-        <Text>Garanhuns, PE, Brasil</Text>
+        <Text>TESTE</Text>
+        <Text>TESTE</Text>
       </View>
       <Text
         style={{
