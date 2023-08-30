@@ -1,5 +1,5 @@
 import {FastifyInstance} from "fastify"
-import {getUsersHandler, registerUserHandler} from "../controllers/user.controller"
+import {getUsersHandler, registerUserHandler, getUser} from "../controllers/user.controller"
 
 async function userRoutes(server: FastifyInstance){
 
@@ -8,6 +8,10 @@ async function userRoutes(server: FastifyInstance){
 
     //Lista usuarios
     server.get('/', getUsersHandler)
+
+    //buscar usuário por id
+    server.get('/:id', getUser)
+
 }
 
 export default userRoutes
