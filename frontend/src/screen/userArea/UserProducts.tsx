@@ -23,11 +23,18 @@ export const UserProducts = () => {
   const auth = getAuth();
   const user = auth.currentUser;
 
+
   const[titulo, setTitulo] = useState('')
   const[id, setId] = useState('')
   const[descricao, setDescricao] = useState('')
   const[categoria, setCategoria] = useState('')
 
+
+  const dados = {
+    titulo: titulo,
+    descricao: descricao,
+    categoriaId: Number(categoria)
+  };
 
 
   const fetchData = async () => {
@@ -59,11 +66,24 @@ export const UserProducts = () => {
 
   //Aqui abriá um modal para editar as coisas:
 
-  function modalA(id, titulo, descricao){
-    setId(id)
-    setTitulo(titulo)
-    setDescricao(descricao)
-    setModalVisible(true)
+  async function modalA(id, titulo, descricao, categoria) {
+    setId(id);
+    setTitulo(titulo);
+    setDescricao(descricao);
+  
+      setModalVisible(true);
+  }
+  
+  async function updateProducts(id, dados) {
+    try {
+      // Espere pela conclusão da solicitação HTTP
+      await axios.put(`http://192.168.0.100:3000/api/produto/${id}`, dados);
+      setId("")
+      setModalVisible(false);
+      // Após a atualização bem-sucedida, você pode atualizar o estado ou fazer outras ações, se necessário.
+    } catch (error) {
+      console.log("Erro ao atualizar os produtos: " + error);
+    }
   }
 
   const renderItem = ({ item }) => (
@@ -83,7 +103,10 @@ export const UserProducts = () => {
         >
           <Feather name="trash-2" size={24} color="#D65353" />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => {modalA(item.id, item.titulo, item.descricao)}} style={styles.button}>
+        <TouchableOpacity onPress={() => {
+          modalA(item.id, item.titulo, item.descricao, item.categoriaId)
+          
+          }} style={styles.button}>
           <Feather name="edit-3" size={24} color="#7353ED" />
         </TouchableOpacity>
       </View>
@@ -111,24 +134,54 @@ export const UserProducts = () => {
               <Text style={Estilo.categoriaText}>Escolha uma nova categoria:</Text>
               <View style={Estilo.categoriaRadio}>
                 <View style={Estilo.TextAndRadio}>
-                  <RadioButton value="1" />
+                  <RadioButton 
+                  value="1" 
+                  status={categoria=== "1" ? "checked" : "unchecked"}
+                  color={categoria === "checked" ? "#808080" : "#7353ED"}
+                  onPress={() => setCategoria("1")}
+                  
+                  />
+              
                   <Text style={Estilo.textRaio}>Roupas</Text>
                 </View>
                 <View style={Estilo.TextAndRadio}>
-                  <RadioButton value="2" />
+                  <RadioButton 
+                  value="2"
+                  status={categoria=== "2" ? "checked" : "unchecked"}
+                  color={categoria === "checked" ? "#808080" : "#7353ED"}
+                  onPress={() => setCategoria("2")}
+                  />
                   <Text style={Estilo.textRaio}>Alimentos</Text>
                 </View>
                 <View style={Estilo.TextAndRadio}>
-                  <RadioButton value="3" />
+                  <RadioButton 
+                  value="3" 
+                  status={categoria=== "3" ? "checked" : "unchecked"}
+                  color={categoria === "checked" ? "#808080" : "#7353ED"}
+                  onPress={() => setCategoria("3")}
+                  
+                  />
                   <Text style={Estilo.textRaio}>Brinquedos</Text>
                 </View>
                 <View style={Estilo.TextAndRadio}>
-                  <RadioButton value="4" />
+                  <RadioButton 
+                  value="4" 
+                  status={categoria=== "4" ? "checked" : "unchecked"}
+                  color={categoria === "checked" ? "#808080" : "#7353ED"}
+                  onPress={() => setCategoria("4")}
+                  
+                  />
                   <Text style={Estilo.textRaio}>Livros</Text>
                 </View>
   
                 <View style={Estilo.TextAndRadio}>
-                  <RadioButton value="4" />
+                  <RadioButton 
+                  value="5"
+                  status={categoria=== "5" ? "checked" : "unchecked"}
+                  color={categoria === "checked" ? "#808080" : "#7353ED"}
+                  onPress={() => setCategoria("5")}
+                  
+                  />
                   <Text style={Estilo.textRaio}>Transporte</Text>
                 </View>
               </View>
@@ -144,7 +197,7 @@ export const UserProducts = () => {
               />
             </View>
   
-            <Button style={Estilo.botaoDoar} mode="contained" onPress={()=>{setModalVisible(false)}}>
+            <Button style={Estilo.botaoDoar} mode="contained" onPress={()=>{updateProducts(id,dados)}}>
               Atualizar
             </Button>
           </View>
