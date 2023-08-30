@@ -9,7 +9,7 @@ datasource db {
 }
 
 model Usuario {
-  id Int @id //Aqui o id vai ser o do que vier do Firebase
+  id String @id //Aqui o id vai ser o do que vier do Firebase
   nome String
   contato String
   endereco String
