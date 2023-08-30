@@ -35,7 +35,7 @@ export function DonateArea() {
       });
 
     setTitle("");
-    setSelectedCategory("");
+    setSelectedCategory(" ");
     setDescription("");
     setDestino("");
   };
