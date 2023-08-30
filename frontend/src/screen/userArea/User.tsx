@@ -25,7 +25,7 @@ export function User() {
     endereco: string;
   }
 
-  const [usuario, setUsuario] = useState({});
+  const [usuario, setUsuario] = useState<UsuarioData>({nome: "TESTE", contato: "891238123", endereco: "rua tal"});
 
  //Função para fazer o logout
   function logout() {
@@ -69,9 +69,11 @@ export function User() {
     async function carregarUsuario() {
       try {
         setInterval(async()=>{
-          if (!user) {
+          try {
             const userData = await getUserData();
             setUsuario(userData);
+          } catch (error) {
+            setUsuario({nome: "TESTE", contato: "891238123", endereco: "rua tal"})
           }
         },1000)
       } catch (error) {
@@ -88,8 +90,7 @@ export function User() {
        <View style={estilo.userPhoto}>
        <Feather  name="user" size={24} color="#808080"  />
        </View>
-        {/* <Text style={estilo.user_text_info}>{usuario.nome}</Text> */}
-        {usuario.nome ? (
+        {usuario?.nome ? (
           <Text style={estilo.user_text_info}>{usuario.nome}</Text>
         ) : (
           <Text>Nenhum usuário cadastrado.</Text>
