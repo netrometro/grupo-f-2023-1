@@ -79,7 +79,7 @@ export function Inicial({ navigation }) {
         >
           Cadastrar
         </Button>
-        <Text style={{color:"white"}}>Ou</Text>
+       {/*  <Text style={{color:"white"}}>Ou</Text>
         <Button
         
         icon="google"
@@ -88,7 +88,7 @@ export function Inicial({ navigation }) {
           onPress={()=>{}}
         >
           Entrar com o Google
-        </Button>
+        </Button> */}
       </View>
 
     </View>
