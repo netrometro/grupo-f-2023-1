@@ -1,6 +1,15 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { CreateProductImput } from "../schema/produtos.schema";
-import { ProdutoUpdateData, atualiza, createProducts, deleteProductById, findProducts, findProductsByCategory, getProductByItsUser } from "../repository/produtos.repositories";
+import { 
+  ProdutoUpdateData, 
+  atualiza, 
+  createProducts, 
+  deleteProductById, 
+  findProducts, 
+  findProductsByCategory, 
+  getProductByItsUser ,
+  listaDesejo
+} from "../repository/produtos.repositories";
 
 //Criar produtos
 export async function createProductsHandler(request: FastifyRequest<{Body: CreateProductImput}>, reply: FastifyReply){
@@ -108,3 +117,18 @@ export async function getProductsUser(request: FastifyRequest<{ Params: identifi
       console.log("Erro ao atualizar o produto: " + error);
     }
   }
+
+  //Adicionar produtos à lista de desejo
+
+  //Criar produtos
+export async function addToList(request: FastifyRequest<{Body: any}>, reply: FastifyReply){
+  const body = request.body
+  try {
+     const produto = await listaDesejo(body)
+     return reply.code(200).send(produto)
+  } catch (error) {
+     console.log("Erro ao criar usuário: " + error)
+     return reply.code(500).send(error)
+  }
+}
+

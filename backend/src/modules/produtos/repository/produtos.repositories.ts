@@ -66,3 +66,29 @@ export async function atualiza(id:number, dados:ProdutoUpdateData){
   })
   return produtos
 }
+
+//Adicionar produtos à lista de desejo
+
+
+export async function listaDesejo(data:any){
+    const lista = await prisma.listaDesejos.create({
+        data
+    })
+    return lista
+
+}
+
+
+//Listar Todos os produtos da lista de desejo
+
+/* export async function listaDesejo(){
+    const produtosNaListaDeDesejos = await prisma.listaDesejos.findMany({
+  where: {
+    usuarioId: idDoUsuarioLogado,
+  },
+  include: {
+    produto: true,
+  },
+});
+
+} */
