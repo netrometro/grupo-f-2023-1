@@ -13,7 +13,7 @@ model Usuario {
   contato String
   endereco String
   email String @unique
-  listaDesejos ListaDesejos[] // Adicione esta relação para associar usuários à lista de desejos
+
 }
 
 model Categoria {
@@ -32,12 +32,12 @@ model Produto {
   identificadoUsuario String  // Identificar o produto pelo ID do usuário que estiver logado
   destinoEntrega   String?
   listaDesejos     ListaDesejos[] // associar produtos à lista de desejos
+  
 }
 
 model ListaDesejos {
   id         Int      @id @default(autoincrement())
-  usuario    Usuario  @relation(fields: [usuarioId], references: [id])
-  usuarioId  String
+  identificadoUsuario String
   produto    Produto  @relation(fields: [produtoId], references: [id])
   produtoId  Int
   dataAdicao DateTime @default(now())

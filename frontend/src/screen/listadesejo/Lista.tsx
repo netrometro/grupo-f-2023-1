@@ -1,6 +1,6 @@
 import React from "react";
-import { View } from "react-native";
-
+import { View, Text, SafeAreaView } from "react-native";
+import estilo from './Style'
 
 
 
@@ -8,8 +8,15 @@ import { View } from "react-native";
 export function Lista() {
  
   return (
-    <View>
-        
+    <View style={estilo.container}>
+        <View style={estilo.cabecalho}>
+            <Text style={estilo.titulo}>
+                Lista de Desejo
+            </Text>
+        </View>
+        <SafeAreaView>
+            
+        </SafeAreaView>
     </View>
   );
 }

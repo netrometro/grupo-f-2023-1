@@ -27,7 +27,7 @@ async function productRoutes(server: FastifyInstance){
     //adicionar produtos à lista de desejo
     server.post("/lista", addToList )
     //listar produtos da lista de desejo
-    server.get("/lista/:usuarioId", getProdutosLista)
+    server.get("/lista/:identificadoUsuario", getProdutosLista)
 }
 
 export default productRoutes

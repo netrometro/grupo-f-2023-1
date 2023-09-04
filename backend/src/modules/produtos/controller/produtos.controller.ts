@@ -135,13 +135,13 @@ export async function addToList(request: FastifyRequest<{Body: any}>, reply: Fas
 
 
 interface ListaDesejoParams {
-  usuarioId: string;
+  identificadoUsuario: string;
 }
 export async function getProdutosLista(request: FastifyRequest<{ Params: ListaDesejoParams }>, reply: FastifyReply) {
-  const usuarioId = request.params.usuarioId
+  const identificadoUsuario = request.params.identificadoUsuario
 
   try {
-    const lista_desejo = await GetlistaDesejo(usuarioId);
+    const lista_desejo = await GetlistaDesejo(identificadoUsuario);
 
     reply.status(200).send(lista_desejo);
   } catch (error) {

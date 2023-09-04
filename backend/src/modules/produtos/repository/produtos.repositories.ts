@@ -29,13 +29,32 @@ export async function findProductsByCategory(categoriaId:number){
 //deletar produto pelo id
 
 export async function deleteProductById(id: number) {
-    const deletedProduct = await prisma.produto.delete({
-        where:{
-            id
-        }
-    })
-    return deletedProduct;
+  // Verifica se o produto está na lista de desejos de algum usuário
+  const produtoNaLista = await prisma.listaDesejos.findFirst({
+    where: {
+      produtoId: id,
+    },
+  });
+
+  if (produtoNaLista) {
+    // Remove o produto da lista de desejos do usuário
+    await prisma.listaDesejos.delete({
+      where: {
+        id: produtoNaLista.id,
+      },
+    });
+  }
+
+  // Deletar o produto após resolver as pendencias da lista de desejo
+  const deletedProduct = await prisma.produto.delete({
+    where: {
+      id,
+    },
+  });
+
+  return deletedProduct;
 }
+
 
 
 //Listar produto de acordo com o dono
@@ -81,10 +100,10 @@ export async function listaDesejo(data:any){
 
 //Listar Todos os produtos da lista de desejo
 
-export async function GetlistaDesejo(usuarioId: string) {
+export async function GetlistaDesejo(identificadoUsuario: string) {
     const produtosNaListaDeDesejos = await prisma.listaDesejos.findMany({
       where: {
-        usuarioId
+        identificadoUsuario
       },
       include: {
         produto: {
