@@ -6,6 +6,7 @@ import { MyItens } from '../screen/myItens/MyArea';
 import { Feather } from '@expo/vector-icons'; 
 import { AntDesign } from '@expo/vector-icons'
 import { User } from '../screen/userArea/User';
+import { Lista } from '../screen/listadesejo/Lista';
 
 
 const Tab = createBottomTabNavigator()
@@ -78,6 +79,19 @@ export default function TabComponent() {
      
           }}      
           ></Tab.Screen>
+          <Tab.Screen 
+          name='Lista'
+          component={Lista}
+          options={{
+            tabBarIcon: ({focused}) => 
+            focused
+            ? <Feather name="heart" size={30}  color="#7353ED"  />
+            : <Feather name="heart" size={24}  color="#808080"  />,
+            headerShown:false,
+     
+          }}      
+          ></Tab.Screen>
+          
       </Tab.Navigator>    
   );
 }
