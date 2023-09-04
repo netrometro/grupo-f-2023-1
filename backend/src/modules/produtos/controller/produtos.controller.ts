@@ -8,7 +8,8 @@ import {
   findProducts, 
   findProductsByCategory, 
   getProductByItsUser ,
-  listaDesejo
+  listaDesejo,
+  GetlistaDesejo
 } from "../repository/produtos.repositories";
 
 //Criar produtos
@@ -119,8 +120,6 @@ export async function getProductsUser(request: FastifyRequest<{ Params: identifi
   }
 
   //Adicionar produtos à lista de desejo
-
-  //Criar produtos
 export async function addToList(request: FastifyRequest<{Body: any}>, reply: FastifyReply){
   const body = request.body
   try {
@@ -132,3 +131,21 @@ export async function addToList(request: FastifyRequest<{Body: any}>, reply: Fas
   }
 }
 
+//Listar Todos os produtos da lista de desejo
+
+
+interface ListaDesejoParams {
+  usuarioId: string;
+}
+export async function getProdutosLista(request: FastifyRequest<{ Params: ListaDesejoParams }>, reply: FastifyReply) {
+  const usuarioId = request.params.usuarioId
+
+  try {
+    const lista_desejo = await GetlistaDesejo(usuarioId);
+
+    reply.status(200).send(lista_desejo);
+  } catch (error) {
+    console.log("Erro ao buscar a lista: " + error);
+    reply.status(500).send({ message: "Erro ao buscar a lista." });
+  }
+}

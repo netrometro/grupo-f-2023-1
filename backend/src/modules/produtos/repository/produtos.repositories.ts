@@ -81,14 +81,25 @@ export async function listaDesejo(data:any){
 
 //Listar Todos os produtos da lista de desejo
 
-/* export async function listaDesejo(){
+export async function GetlistaDesejo(usuarioId: string) {
     const produtosNaListaDeDesejos = await prisma.listaDesejos.findMany({
-  where: {
-    usuarioId: idDoUsuarioLogado,
-  },
-  include: {
-    produto: true,
-  },
-});
-
-} */
+      where: {
+        usuarioId
+      },
+      include: {
+        produto: {
+          select: {
+            id: true,
+            titulo: true,
+            descricao: true,
+            dataCriacao: false,
+            categoriaId: true,
+            identificadoUsuario: true,
+            destinoEntrega: true,
+          },
+        },
+      },
+    });
+    return produtosNaListaDeDesejos.map((item) => item.produto); 
+  }
+  
