@@ -18,8 +18,13 @@ export default async function getProdutos() {
     // Faz uma requisição GET para a API usando o Axios
     const response = await axios.get(apiUrl);
 
-    // Retorna os dados da resposta da API
-    return response.data;
+       // Retorna os dados da resposta da API
+       const produtosEListaDesejo = response.data.map(item => ({
+        produto: item.produto,
+        listaDesejoId: item.listaDesejoId
+      }));
+  
+      return produtosEListaDesejo;
   } catch (error) {
     console.log("Problema do axios: " + error);
     throw error;

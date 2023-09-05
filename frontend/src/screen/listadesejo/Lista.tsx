@@ -31,7 +31,7 @@ export function Lista() {
   const handleDeletarPress = async (id) => {
     try {
 
-      const apiUrl = `${MEU_IP}/api/produto/${id}`;
+      const apiUrl = `${MEU_IP}/api/produto/lista/${id}`;
       console.log(id);
 
       const response = await axios.delete(apiUrl);
@@ -54,17 +54,17 @@ export function Lista() {
             marginBottom: 100,
           }}
           data={produtos}
-          keyExtractor={(item) => item.id.toString()}
+          keyExtractor={(item) => item.produto.id.toString()}
           numColumns={2}
           contentContainerStyle={{ flexGrow: 1, alignItems: "center" }} // Centraliza verticalmente
           renderItem={({ item }) => (
             <View style={estilo1.produto}>
               <View style={estilo1.produtoTras}></View>
-              <Text style={estilo1.nome}>{item.titulo}</Text>
+              <Text style={estilo1.nome}>{item.produto.titulo}</Text>
 
               <TouchableOpacity
                 onPress={() => {
-                  handleDeletarPress(item.id);
+                  handleDeletarPress(item.listaDesejoId);
                 }}
                 style={estilo1.button}
               >

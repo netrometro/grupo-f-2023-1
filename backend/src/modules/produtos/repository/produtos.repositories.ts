@@ -119,7 +119,10 @@ export async function GetlistaDesejo(identificadoUsuario: string) {
         },
       },
     });
-    return produtosNaListaDeDesejos.map((item) => item.produto); 
+    return produtosNaListaDeDesejos.map((item) => ({
+      produto: item.produto,
+      listaDesejoId: item.id,
+    }));
   }
 
 
