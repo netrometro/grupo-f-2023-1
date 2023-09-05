@@ -121,4 +121,18 @@ export async function GetlistaDesejo(identificadoUsuario: string) {
     });
     return produtosNaListaDeDesejos.map((item) => item.produto); 
   }
+
+
   
+  //deletar produto pelo id
+
+export async function deleteProductFromList(id: number) {
+  // Verifica se o produto está na lista de desejos de algum usuário
+  const produtoNaLista = await prisma.listaDesejos.delete({
+    where: {
+      id
+    },
+  });
+
+  return produtoNaLista;
+}
