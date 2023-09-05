@@ -2,6 +2,7 @@ import { Text, View, TouchableOpacity } from 'react-native';
 import estilo from "./styles";
 import React from 'react';
  import deletarhoras from "../../services/deletarhoras/deletarhoras";
+ 
 export function Produto({ nome, id, destino }) { // Certifique-se de ter o id disponível como prop
     const handleDeletarPress = async () => {
         try {
