@@ -32,6 +32,7 @@ model Produto {
   identificadoUsuario String  // Identificar o produto pelo ID do usuário que estiver logado
   destinoEntrega   String?
   listaDesejos     ListaDesejos[] // associar produtos à lista de desejos
+  cepProduto String?
   
 }
 
