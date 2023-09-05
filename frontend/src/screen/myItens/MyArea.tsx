@@ -62,7 +62,7 @@ export function MyItens() {
           numColumns={2}
           contentContainerStyle={{ flexGrow: 1, alignItems: 'center' }} // Centraliza verticalmente
           renderItem={({ item }) => (
-              <Produto nome={item.titulo} id={item.id} destino={item.destinoEntrega}/>
+              <Produto nome={item.titulo} id={item.id} destino={item.destinoEntrega} cep={item.cepProduto}/>
           )}
         />
       </View>
