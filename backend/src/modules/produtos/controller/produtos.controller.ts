@@ -9,7 +9,8 @@ import {
   findProductsByCategory, 
   getProductByItsUser ,
   listaDesejo,
-  GetlistaDesejo
+  GetlistaDesejo,
+  deleteProductFromList
 } from "../repository/produtos.repositories";
 
 //Criar produtos
@@ -149,3 +150,27 @@ export async function getProdutosLista(request: FastifyRequest<{ Params: ListaDe
     reply.status(500).send({ message: "Erro ao buscar a lista." });
   }
 }
+
+
+//Deletar
+
+interface DelProductParams {
+  id: string;
+ }
+ export async function deleteProductList(request: FastifyRequest<{ Params: DelProductParams }>, reply: FastifyReply) {
+   const productId = parseInt(request.params.id, 10);
+ 
+   try {
+     const deletedProduct = await deleteProductFromList(productId);
+     if (!deletedProduct) {
+       reply.code(400).send({ message: "O produto já não existe."});
+       return;
+     }
+     
+     reply.code(200).send("O produto foi deletado.");
+   } catch (error) {
+     console.log("Erro ao deletar o produto: " + error);
+     return reply.code(500).send({ mensage: "Um erro ocorreu ao deletar o produto"});
+   }
+ }
+ 

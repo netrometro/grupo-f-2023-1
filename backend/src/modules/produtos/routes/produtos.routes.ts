@@ -7,7 +7,8 @@ import {
     getProductsUser, 
     updateProducts,
     addToList,
-    getProdutosLista
+    getProdutosLista,
+    deleteProductList
 } from "../controller/produtos.controller";
 
 
@@ -28,6 +29,7 @@ async function productRoutes(server: FastifyInstance){
     server.post("/lista", addToList )
     //listar produtos da lista de desejo
     server.get("/lista/:identificadoUsuario", getProdutosLista)
+    server.delete("/lista/:id", deleteProductList)
 }
 
 export default productRoutes
