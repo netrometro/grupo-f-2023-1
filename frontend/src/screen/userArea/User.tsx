@@ -97,8 +97,16 @@ export function User() {
           <Text>Nenhum usuário cadastrado.</Text>
         )}
         <Text>{user.email}</Text>
-        <Text>TESTE</Text>
-        <Text>TESTE</Text>
+        {usuario?.endereco ? (
+          <Text style={estilo.user_text_info}>{usuario.endereco}</Text>
+        ) : (
+          <Text>Nenhum usuário cadastrado.</Text>
+        )}
+        {usuario?.contato ? (
+          <Text style={estilo.user_text_info}>{usuario.contato}</Text>
+        ) : (
+          <Text>Nenhum usuário cadastrado.</Text>
+        )}
       </View>
       <Text
         style={{
