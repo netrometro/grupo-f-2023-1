@@ -125,7 +125,6 @@ export function DonateArea() {
               // Verifica se o texto inserido é um número
               setDestino(text);
             }}
-            keyboardType="numeric"
           />
 
           {/* Novo campo de entrada para o CEP */}
