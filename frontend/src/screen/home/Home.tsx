@@ -48,7 +48,7 @@ export function Home() {
           numColumns={2}
           contentContainerStyle={{ flexGrow: 1, alignItems: 'center' }} // Centraliza verticalmente
           renderItem={({ item }) => (
-              <Produto nome={item.titulo} id={item.id}/>
+              <Produto nome={item.titulo} id={item.id} identifcadoUsuario={item.identificadoUsuario}/>
           )}
         />
       </View>
