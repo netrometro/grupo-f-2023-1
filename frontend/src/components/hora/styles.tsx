@@ -3,7 +3,7 @@ import { StyleSheet} from "react-native";
 export default StyleSheet.create({
     produto:{
         backgroundColor: '#808080',
-        height: 160,
+        height: 'auto',
         width: 140,
         margin: 21,
         borderRadius: 18,

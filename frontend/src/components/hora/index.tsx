@@ -42,10 +42,8 @@ export function Produto({ nome, id, destino, cep }) {
             {cepInfo ? (
                 <View>
                     <Text style={estilo.nome}>CEP: {cepInfo.cep}</Text>
-                    <Text style={estilo.nome}>Logradouro: {cepInfo.logradouro}</Text>
                     <Text style={estilo.nome}>Bairro: {cepInfo.bairro}</Text>
                     <Text style={estilo.nome}>Cidade: {cepInfo.localidade}</Text>
-                    <Text style={estilo.nome}>Estado: {cepInfo.uf}</Text>
                 </View>
             ) : (
                 <Text style={estilo.nome}>Buscando informações do CEP...</Text>
