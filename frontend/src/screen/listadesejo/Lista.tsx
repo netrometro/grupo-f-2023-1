@@ -48,10 +48,10 @@ export function Lista() {
       <View style={estilo.cabecalho}>
         <Text style={estilo.titulo}>Lista de Desejo</Text>
       </View>
-      <SafeAreaView>
+      <View>
         <FlatList
           style={{
-            marginBottom: 100,
+            marginBottom: 200
           }}
           data={produtos}
           keyExtractor={(item) => item.produto.id.toString()}
@@ -61,7 +61,6 @@ export function Lista() {
             <View style={estilo1.produto}>
               <View style={estilo1.produtoTras}></View>
               <Text style={estilo1.nome}>{item.produto.titulo}</Text>
-
               <TouchableOpacity
                 onPress={() => {
                   handleDeletarPress(item.listaDesejoId);
@@ -73,7 +72,7 @@ export function Lista() {
             </View>
           )}
         />
-      </SafeAreaView>
+      </View>
     </View>
   );
 }
