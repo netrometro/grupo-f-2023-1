@@ -16,7 +16,7 @@ export function DonateArea() {
   const auth = getAuth();
   const user = auth.currentUser;
 
-  const handleDonation = () => {
+  const handleDonation = async() => {
     const formData = {
       titulo: title,
       categoriaId: Number(selectedCategory),
@@ -25,7 +25,7 @@ export function DonateArea() {
       destinoEntrega: destino         //isTransportSelected ? Number(distance) : null
     };
     
-    axios
+    await axios
       .post(`${MEU_IP}/api/produto`, formData)
       .then((response) => {
         console.log("Doação enviada com sucesso", response.data);
@@ -38,6 +38,20 @@ export function DonateArea() {
     setSelectedCategory(" ");
     setDescription("");
     setDestino("");
+
+    const corpoReq ={
+      email:user.email,
+      produto: title
+    }
+
+    await axios
+    .post(`https://api-email-jx4u.onrender.com/email`, corpoReq)
+    .then((response) => {
+      console.log("Email enviado com sucesso");
+    })
+    .catch((error) => {
+      console.error("Erro ao enviar email", error);
+    });
   };
 
   
