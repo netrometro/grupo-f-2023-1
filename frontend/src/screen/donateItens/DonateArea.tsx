@@ -35,25 +35,35 @@ export function DonateArea() {
         console.error("Erro ao enviar doação", error);
       });
 
+
+      const corpoReq ={
+        email:user.email,
+        produto: title
+      }
+
+      try {
+        await axios
+        .post(`https://api-email-jx4u.onrender.com/email`, corpoReq)
+        .then((response) => {
+          console.log("Email enviado com sucesso");
+        })
+        .catch((error) => {
+          console.error("Erro ao enviar email", error);
+        });
+      } catch (error) {
+        console.log(error)
+      }
+  
+    
+
     setTitle("");
     setSelectedCategory(" ");
     setDescription("");
     setDestino("");
-
-    const corpoReq ={
-      email:user.email,
-      produto: title
-    }
-
-    await axios
-    .post(`https://api-email-jx4u.onrender.com/email`, corpoReq)
-    .then((response) => {
-      console.log("Email enviado com sucesso");
-    })
-    .catch((error) => {
-      console.error("Erro ao enviar email", error);
-    });
     setCep(""); // Limpe o campo de CEP após o envio
+
+ 
+   
   };
 
   return (
