@@ -12,7 +12,7 @@ export function DonateArea() {
   const [description, setDescription] = useState("");
   const [isTransportSelected, setIsTransportSelected] = useState(false);
   const [destino, setDestino] = useState("");
-  const [gasolina, setGasolina] = useState("");
+  const [cep, setCep] = useState(""); // Novo estado para o CEP
   const auth = getAuth();
   const user = auth.currentUser;
 
@@ -22,7 +22,8 @@ export function DonateArea() {
       categoriaId: Number(selectedCategory),
       descricao: description,
       identificadoUsuario: user.uid,
-      destinoEntrega: destino         //isTransportSelected ? Number(distance) : null
+      destinoEntrega: destino,
+      cepProduto: cep, // Adicione o CEP do usuário ao formData
     };
     
     await axios
@@ -52,18 +53,17 @@ export function DonateArea() {
     .catch((error) => {
       console.error("Erro ao enviar email", error);
     });
+    setCep(""); // Limpe o campo de CEP após o envio
   };
-
-  
 
   return (
     <View style={Estilo.container}>
       <View style={Estilo.tituloContainer}>
         <Text style={Estilo.tituloText}>Título:</Text>
         <TextInput
-          selectionColor={'#7353ED'}
+          selectionColor={"#7353ED"}
           style={Estilo.tituloImput}
-          value={ title}
+          value={title}
           onChangeText={setTitle}
         />
       </View>
@@ -126,32 +126,41 @@ export function DonateArea() {
 
 
 {isTransportSelected && selectedCategory === "5" && (
-  <View style={Estilo.distanciaContainer}>
-    <Text style={Estilo.distanciaTextt}>Coloque o seu destino e descreva quais produtos voce pode entregar</Text>
-    <Text style={Estilo.distanciaText}>Destino:</Text>
-    <TextInput
-      selectionColor={'#7353ED'}
-      style={Estilo.distanciaInput}
-      value={destino}
-      onChangeText={text => {
-        // Verifica se o texto inserido é um número
-        
-          setDestino(text);
-      }}
-      keyboardType="numeric"
-    />
-    
-  </View>
+        <View style={Estilo.distanciaContainer}>
+          <Text style={Estilo.distanciaTextt}>
+            Coloque o seu destino e descreva quais produtos você pode entregar
+          </Text>
+          <Text style={Estilo.distanciaText}>Destino:</Text>
+          <TextInput
+            selectionColor={"#7353ED"}
+            style={Estilo.distanciaInput}
+            value={destino}
+            onChangeText={(text) => {
+              // Verifica se o texto inserido é um número
+              setDestino(text);
+            }}
+            keyboardType="numeric"
+          />
 
-  
-)}
-
-      
+          {/* Novo campo de entrada para o CEP */}
+          <Text style={Estilo.distanciaText}>CEP:</Text>
+          <TextInput
+            selectionColor={"#7353ED"}
+            style={Estilo.distanciaInput}
+            value={cep}
+            onChangeText={(text) => {
+              // Verifica se o texto inserido é um número
+              setCep(text);
+            }}
+            keyboardType="numeric"
+          />
+        </View>
+      )}
 
       <View style={Estilo.descricaoContainer}>
         <Text style={Estilo.descricaoText}>Descrição:</Text>
         <TextInput
-          selectionColor={'#7353ED'}
+          selectionColor={"#7353ED"}
           style={Estilo.descricaoImput}
           value={description}
           onChangeText={setDescription}
