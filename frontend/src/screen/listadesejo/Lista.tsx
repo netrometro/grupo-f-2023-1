@@ -58,12 +58,9 @@ export function Lista() {
           renderItem={({ item }) => (
             <View style={estilo1.produto}>
               <View style={estilo1.produtoTras}></View>
-<<<<<<< HEAD
               <Text style={[estilo1.nome, { color: theme === "daltonic" ? "black" : "white" }]}>{item.produto.titulo}</Text>
 
-=======
               <Text style={estilo1.nome}>{item.produto.titulo}</Text>
->>>>>>> main
               <TouchableOpacity
                 onPress={() => {
                   handleDeletarPress(item.listaDesejoId);
