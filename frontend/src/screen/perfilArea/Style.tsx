@@ -29,5 +29,9 @@ export default StyleSheet.create({
         borderRadius: 4,
         paddingHorizontal: 8,
         marginBottom: 12,
-    }
+    },
+    phoneInput:{
+        alignItems: 'center',
+        marginBottom: 10,
+    },
 })
