@@ -28,7 +28,8 @@ export default StyleSheet.create({
         backgroundColor: 'white',
         borderRadius: 4,
         paddingHorizontal: 8,
-        marginBottom: 12,
+        height: 55,
+        width: 300
     },
     phoneInput:{
         alignItems: 'center',
