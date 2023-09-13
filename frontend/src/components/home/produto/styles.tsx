@@ -33,4 +33,9 @@ export default StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
       },
+      
+      teste: {
+        display: "flex",
+        flexDirection: "row"
+      },
 })

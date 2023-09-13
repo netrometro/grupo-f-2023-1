@@ -26,7 +26,7 @@ export function User() {
     endereco: string;
   }
 
-  const [usuario, setUsuario] = useState<UsuarioData>({nome: "TESTE", contato: "891238123", endereco: "rua tal"});
+  const [usuario, setUsuario] = useState<UsuarioData>({nome: "Carregando...", contato: "Carregando...", endereco: "Carregando..."});
 
   // Função para fazer o logout
   function logout() {
@@ -65,6 +65,7 @@ export function User() {
     }
   }
   
+  //Parte resposável por carregar os dados do perfil a serem mostrados na tela
   useEffect(() => {
     async function carregarUsuario() {
       try {
@@ -73,7 +74,7 @@ export function User() {
             const userData = await getUserData();
             setUsuario(userData);
           } catch (error) {
-            setUsuario({nome: "TESTE", contato: "891238123", endereco: "rua tal"})
+            setUsuario({nome: "Carregando...", contato: "Carregando...", endereco: "Carregando..."})
           }
         }, 1000)
       } catch (error) {
@@ -96,8 +97,16 @@ export function User() {
           <Text>{theme === "daltonic" ? "Nenhum usuário cadastrado." : "No user registered."}</Text>
         )}
         <Text>{user.email}</Text>
-        <Text>TESTE</Text>
-        <Text>TESTE</Text>
+        {usuario?.endereco ? (
+          <Text style={estilo.user_text_info}>{usuario.endereco}</Text>
+        ) : (
+          <Text>Nenhum usuário cadastrado.</Text>
+        )}
+        {usuario?.contato ? (
+          <Text style={estilo.user_text_info}>{usuario.contato}</Text>
+        ) : (
+          <Text>Nenhum usuário cadastrado.</Text>
+        )}
       </View>
       <Text
         style={{

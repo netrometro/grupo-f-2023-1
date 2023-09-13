@@ -46,10 +46,10 @@ export function Lista() {
       <View style={estilo.cabecalho}>
         <Text style={[estilo.titulo, { color: theme === "daltonic" ? "black" : "white" }]}>Lista de Desejo</Text>
       </View>
-      <SafeAreaView>
+      <View>
         <FlatList
           style={{
-            marginBottom: 100,
+            marginBottom: 200
           }}
           data={produtos}
           keyExtractor={(item) => item.produto.id.toString()}
@@ -58,8 +58,12 @@ export function Lista() {
           renderItem={({ item }) => (
             <View style={estilo1.produto}>
               <View style={estilo1.produtoTras}></View>
+<<<<<<< HEAD
               <Text style={[estilo1.nome, { color: theme === "daltonic" ? "black" : "white" }]}>{item.produto.titulo}</Text>
 
+=======
+              <Text style={estilo1.nome}>{item.produto.titulo}</Text>
+>>>>>>> main
               <TouchableOpacity
                 onPress={() => {
                   handleDeletarPress(item.listaDesejoId);
@@ -71,7 +75,7 @@ export function Lista() {
             </View>
           )}
         />
-      </SafeAreaView>
+      </View>
     </View>
   );
 }
