@@ -6,6 +6,9 @@ import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { firebaseConfig } from '../../config/firebase.config';
 
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/bootstrap.css";
+
 
 export  function Perfil() {
 
@@ -48,12 +51,15 @@ export  function Perfil() {
         onChangeText={setEndereco}
         style={estilo.input}
       />
-      <TextInput
-        placeholder="contato"
-        value={contato}
-        onChangeText={setContato}
-        style={estilo.input}
-      />
+      {enderecoError !== '' && <Text style={estilo.errorText}>{enderecoError}</Text>}
+      <View style={estilo.phoneInput}>
+        <PhoneInput
+          country={"br"}
+          enableSearch={true}
+          value={contato}
+          onChange={(contato) => setContato(contato)}
+        />
+      </View>
       <Button title="Cadastrar" onPress={handleCadastro} />
 
     </View>
