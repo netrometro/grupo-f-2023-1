@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import { View, Text, TextInput } from "react-native";
+import { View, Text, TextInput, Alert } from "react-native";
 import { RadioButton, Button } from "react-native-paper";
 import Estilo from "./Styles";
 import axios from "axios";
 import { MEU_IP } from "../../config";
 import { getAuth } from "firebase/auth";
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export function DonateArea() {
   const [title, setTitle] = useState("");
@@ -25,6 +28,13 @@ export function DonateArea() {
       destinoEntrega: destino,
       cepProduto: cep, // Adicione o CEP do usuário ao formData
     };
+
+    if(title === "" || selectedCategory ==="" || destino==="" ||description==="" || isTransportSelected===null ){
+      toast.error('Por favor, preencha todos os campos obrigatórios.', {
+        position: toast.POSITION.TOP_CENTER,
+      });
+      return
+    }
     
     await axios
       .post(`${MEU_IP}/api/produto`, formData)
@@ -68,6 +78,7 @@ export function DonateArea() {
 
   return (
     <View style={Estilo.container}>
+      <ToastContainer />
       <View style={Estilo.tituloContainer}>
         <Text style={Estilo.tituloText}>Título:</Text>
         <TextInput
