@@ -130,5 +130,7 @@ export default StyleSheet.create({
     borderRadius: 5,
     color: "#fff",
   },
-
+  errorText:{
+    color: 'red'
+  }
 });
