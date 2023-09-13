@@ -32,7 +32,7 @@ export function DonateArea() {
       cepProduto: cep, // Adicione o CEP do usuário ao formData
     };
 
-    if(title === "" || selectedCategory ==="" || destino==="" ||description==="" || isTransportSelected===null ){
+    if(title === "" || selectedCategory ==="" ||description==="" ){
       toast.error('Por favor, preencha todos os campos obrigatórios.', {
         position: toast.POSITION.TOP_CENTER,
       });
