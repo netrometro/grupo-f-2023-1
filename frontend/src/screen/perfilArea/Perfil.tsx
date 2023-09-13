@@ -64,10 +64,16 @@ export  function Perfil() {
   }
 
   const handleCadastro = () => {
-    console.log('Dados de cadastro:', { nome, endereco, contato });
-    console.log('Dados de cadastro:', { data });
-    cadastrarPerfil(data);
-  };
+    if (validateFields()) {
+      console.log('Dados de cadastro:', { nome, endereco, contato });
+      console.log('Dados de cadastro:', { data });
+      cadastrarPerfil(data);
+    } else {
+      toast.error('Por favor, preencha todos os campos obrigatórios.', {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    }
+    };
   
   return (
     <View style={estilo.container}>
@@ -80,6 +86,7 @@ export  function Perfil() {
         onChangeText={setNome}
         style={estilo.input}
       />
+      {nomeError !== '' && <Text style={estilo.errorText}>{nomeError}</Text>}
       <TextInput
         placeholder="Endereço"
         value={endereco}
@@ -94,6 +101,7 @@ export  function Perfil() {
           value={contato}
           onChange={(contato) => setContato(contato)}
         />
+        {contatoError !== '' && <Text style={estilo.errorText}>{contatoError}</Text>}
       </View>
       <Button title="Cadastrar" onPress={handleCadastro} />
 
