@@ -9,6 +9,8 @@ import { firebaseConfig } from '../../config/firebase.config';
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/bootstrap.css";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export  function Perfil() {
 
