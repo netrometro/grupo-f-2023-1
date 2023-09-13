@@ -1,18 +1,24 @@
 import React, { useState } from "react";
-import { View, Text, TextInput } from "react-native";
+import { View, Text, TextInput, Alert } from "react-native";
 import { RadioButton, Button } from "react-native-paper";
 import Estilo from "./Styles";
 import axios from "axios";
 import { MEU_IP } from "../../config";
 import { getAuth } from "firebase/auth";
+import { useTheme } from "./../ThemeContext"; // Importe o useTheme
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export function DonateArea() {
+  const { theme } = useTheme(); // Obtenha o tema do contexto
+
   const [title, setTitle] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [description, setDescription] = useState("");
   const [isTransportSelected, setIsTransportSelected] = useState(false);
   const [destino, setDestino] = useState("");
-  const [cep, setCep] = useState(""); // Novo estado para o CEP
+  const [cep, setCep] = useState("");
   const auth = getAuth();
   const user = auth.currentUser;
 
@@ -25,6 +31,13 @@ export function DonateArea() {
       destinoEntrega: destino,
       cepProduto: cep, // Adicione o CEP do usuário ao formData
     };
+
+    if(title === "" || selectedCategory ==="" || destino==="" ||description==="" || isTransportSelected===null ){
+      toast.error('Por favor, preencha todos os campos obrigatórios.', {
+        position: toast.POSITION.TOP_CENTER,
+      });
+      return
+    }
     
     await axios
       .post(`${MEU_IP}/api/produto`, formData)
@@ -67,17 +80,17 @@ export function DonateArea() {
   };
 
   return (
-    <View style={Estilo.container}>
+    <View style={[Estilo.container, { backgroundColor: theme === "daltonic" ? "#AABBCC" : "#191924" }]}>
+      <ToastContainer />
       <View style={Estilo.tituloContainer}>
         <Text style={Estilo.tituloText}>Título:</Text>
         <TextInput
-          selectionColor={"#7353ED"}
+          selectionColor={theme === "daltonic" ? "#AABBCC" : "#7353ED"}
           style={Estilo.tituloImput}
           value={title}
           onChangeText={setTitle}
         />
       </View>
-
       <View style={Estilo.categoriaContainer}>
         <Text style={Estilo.categoriaText}>Categoria:</Text>
         <View style={Estilo.categoriaRadio}>

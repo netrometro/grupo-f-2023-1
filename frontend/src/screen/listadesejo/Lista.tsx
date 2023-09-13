@@ -9,9 +9,11 @@ import {
 import estilo from "./Style";
 import getProdutos from "./getProducts";
 import { Feather } from "@expo/vector-icons";
+import { useTheme } from "./../ThemeContext"; // Importe o useTheme
 
 export function Lista() {
   const [produtos, setProdutos] = useState([]);
+  const { theme } = useTheme(); // Obtenha o tema do contexto
 
   useEffect(() => {
     async function carregarProdutos() {
@@ -30,13 +32,9 @@ export function Lista() {
 
   const handleDeletarPress = async (id) => {
     try {
-
       const apiUrl = `${MEU_IP}/api/produto/lista/${id}`;
       console.log(id);
-
       const response = await axios.delete(apiUrl);
-
-
       return response.data;
     } catch (error) {
       console.error("Erro ao deletar o dado:", error);
@@ -44,9 +42,9 @@ export function Lista() {
   };
 
   return (
-    <View style={estilo.container}>
+    <View style={[estilo.container, { backgroundColor: theme === "daltonic" ? "#AABBCC" : "#191924" }]}>
       <View style={estilo.cabecalho}>
-        <Text style={estilo.titulo}>Lista de Desejo</Text>
+        <Text style={[estilo.titulo, { color: theme === "daltonic" ? "black" : "white" }]}>Lista de Desejo</Text>
       </View>
       <View>
         <FlatList
@@ -60,6 +58,8 @@ export function Lista() {
           renderItem={({ item }) => (
             <View style={estilo1.produto}>
               <View style={estilo1.produtoTras}></View>
+              <Text style={[estilo1.nome, { color: theme === "daltonic" ? "black" : "white" }]}>{item.produto.titulo}</Text>
+
               <Text style={estilo1.nome}>{item.produto.titulo}</Text>
               <TouchableOpacity
                 onPress={() => {
@@ -76,6 +76,7 @@ export function Lista() {
     </View>
   );
 }
+
 
 import { StyleSheet } from "react-native";
 import deletarhoras from "../../services/deletarhoras/deletarhoras";
