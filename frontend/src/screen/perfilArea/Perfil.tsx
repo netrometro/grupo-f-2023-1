@@ -71,6 +71,7 @@ export  function Perfil() {
   
   return (
     <View style={estilo.container}>
+      <ToastContainer />
       <Text style={estilo.titulo}>Cadastro</Text>
 
       <TextInput
