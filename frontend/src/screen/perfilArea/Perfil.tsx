@@ -21,6 +21,38 @@ export  function Perfil() {
   const [contato, setContato] = useState('');
   const [endereco, setEndereco] = useState('');
 
+  const [nomeError, setNomeError] = useState('');
+  const [contatoError, setContatoError] = useState('');
+  const [enderecoError, setEnderecoError] = useState('');
+
+  const validateFields = () => {
+    let isValid = true;
+  
+    if (nome.trim() === '') {
+      setNomeError('O nome não pode estar em branco');
+      isValid = false;
+    } else {
+      setNomeError('');
+    }
+  
+    if (contato.trim() === '') {
+      setContatoError('O contato não pode estar em branco');
+      isValid = false;
+    } else {
+      setContatoError('');
+    }
+  
+    if (endereco.trim() === '') {
+      setEnderecoError('O endereço não pode estar em branco');
+      isValid = false;
+    } else {
+      setEnderecoError('');
+    }
+  
+    return isValid;
+  };
+
+
   const data = {
     id: user.uid,
     nome: nome,
