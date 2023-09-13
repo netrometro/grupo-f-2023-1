@@ -34,4 +34,7 @@ export default StyleSheet.create({
         alignItems: 'center',
         marginBottom: 10,
     },
+    errorText:{
+        color: 'red'
+    },
 })
