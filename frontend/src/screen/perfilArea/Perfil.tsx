@@ -5,6 +5,7 @@ import cadastrarPerfil from '../../services/cadastrarPerfil/cadastrarPerfil';
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { firebaseConfig } from '../../config/firebase.config';
+import { useTheme } from "./../ThemeContext"; // Importe o useTheme
 
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/bootstrap.css";
@@ -13,6 +14,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export  function Perfil() {
+  const { theme } = useTheme(); // Obtenha o tema do contexto
 
   const app = initializeApp(firebaseConfig)
   const auth = getAuth(app)
@@ -76,9 +78,9 @@ export  function Perfil() {
     };
   
   return (
-    <View style={estilo.container}>
+    <View style={[estilo.container, { backgroundColor: theme === "daltonic" ? "#AABBCC" : "#191924" }]}>
       <ToastContainer />
-      <Text style={estilo.titulo}>Cadastro</Text>
+      <Text style={[estilo.titulo, { color: theme === "daltonic" ? "black" : "white" }]}>Cadastro</Text>
 
       <TextInput
         placeholder="Nome"
