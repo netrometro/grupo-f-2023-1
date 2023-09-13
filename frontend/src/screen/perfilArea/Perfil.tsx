@@ -1,61 +1,49 @@
-import React, { useState } from 'react'
-import { View, Text, TextInput, Button } from 'react-native'
+import React, { useState } from 'react';
+import { View, Text, TextInput, Button } from 'react-native';
 import estilo from "./Style";
 import cadastrarPerfil from '../../services/cadastrarPerfil/cadastrarPerfil';
-import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
-import { firebaseConfig } from '../../config/firebase.config';
+import { useTheme } from "./../ThemeContext"; // Importe o useTheme
 
-
-export  function Perfil() {
-
-  const app = initializeApp(firebaseConfig)
-  const auth = getAuth(app)
-
-  const user = auth.currentUser;
+export function Perfil() {
+  const { theme } = useTheme(); // Obtenha o tema do contexto
 
   const [nome, setNome] = useState('');
   const [contato, setContato] = useState('');
   const [endereco, setEndereco] = useState('');
 
-  const data = {
-    id: user.uid,
-    nome: nome,
-    contato: contato,
-    endereco: endereco,
-    email: user.email
-  }
-
   const handleCadastro = () => {
-    console.log('Dados de cadastro:', { nome, endereco, contato });
-    console.log('Dados de cadastro:', { data });
+    const data = {
+      nome: nome,
+      contato: contato,
+      endereco: endereco,
+    };
+
+    console.log('Dados de cadastro:', data);
     cadastrarPerfil(data);
   };
-  
-  return (
-    <View style={estilo.container}>
-      <Text style={estilo.titulo}>Cadastro</Text>
 
+  return (
+    <View style={[estilo.container, { backgroundColor: theme === "daltonic" ? "#AABBCC" : "#191924" }]}>
+      <Text style={[estilo.titulo, { color: theme === "daltonic" ? "black" : "white" }]}>Cadastro</Text>
       <TextInput
         placeholder="Nome"
         value={nome}
         onChangeText={setNome}
-        style={estilo.input}
+        style={[estilo.input, { backgroundColor: theme === "daltonic" ? "#AABBCC" : "#191924" }]}
       />
       <TextInput
         placeholder="Endereço"
         value={endereco}
         onChangeText={setEndereco}
-        style={estilo.input}
+        style={[estilo.input, { backgroundColor: theme === "daltonic" ? "#AABBCC" : "#191924" }]}
       />
       <TextInput
-        placeholder="contato"
+        placeholder="Contato"
         value={contato}
         onChangeText={setContato}
-        style={estilo.input}
+        style={[estilo.input, { backgroundColor: theme === "daltonic" ? "#AABBCC" : "#191924" }]}
       />
       <Button title="Cadastrar" onPress={handleCadastro} />
-
     </View>
-  )
+  );
 }

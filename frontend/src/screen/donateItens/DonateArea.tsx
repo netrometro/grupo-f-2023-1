@@ -5,14 +5,17 @@ import Estilo from "./Styles";
 import axios from "axios";
 import { MEU_IP } from "../../config";
 import { getAuth } from "firebase/auth";
+import { useTheme } from "./../ThemeContext"; // Importe o useTheme
 
 export function DonateArea() {
+  const { theme } = useTheme(); // Obtenha o tema do contexto
+
   const [title, setTitle] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [description, setDescription] = useState("");
   const [isTransportSelected, setIsTransportSelected] = useState(false);
   const [destino, setDestino] = useState("");
-  const [cep, setCep] = useState(""); // Novo estado para o CEP
+  const [cep, setCep] = useState("");
   const auth = getAuth();
   const user = auth.currentUser;
 
@@ -43,17 +46,16 @@ export function DonateArea() {
   };
 
   return (
-    <View style={Estilo.container}>
+    <View style={[Estilo.container, { backgroundColor: theme === "daltonic" ? "#AABBCC" : "#191924" }]}>
       <View style={Estilo.tituloContainer}>
         <Text style={Estilo.tituloText}>Título:</Text>
         <TextInput
-          selectionColor={"#7353ED"}
+          selectionColor={theme === "daltonic" ? "#AABBCC" : "#7353ED"}
           style={Estilo.tituloImput}
           value={title}
           onChangeText={setTitle}
         />
       </View>
-
       <View style={Estilo.categoriaContainer}>
         <Text style={Estilo.categoriaText}>Categoria:</Text>
         <View style={Estilo.categoriaRadio}>

@@ -1,30 +1,13 @@
-// import React from "react";
-// import { View, Text } from "react-native";
-
-// export function MyItens() {
-    
-    
-//   return (
-//    <View>
-//        <Text>
-//            Aqui coloca a tela onde o usuário pode ver os produtos dele
-//        </Text>
-//    </View>
-//   );
-// }
 import React, { useState, useEffect } from "react";
 import { View, Text, FlatList } from 'react-native';
 import filtrarhoras from "../../services/filtrarhoras/filtrarhoras";
 import ProductListScreen from './../../components/Filtrarhora/index';
 import estilo from "./Styles";
-
 import { Produto } from "../../components/hora/index";
-
-
-
-// Pagina home, primeira página mostrada ao cliente logado, mostra todos os produtos.
+import { useTheme } from "./../ThemeContext"; // Importe o useTheme
 
 export function MyItens() {
+  const { theme } = useTheme(); // Obtenha o tema do contexto
   const [produtos, setProdutos] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
@@ -48,23 +31,20 @@ export function MyItens() {
   };
 
   return (
-    <View style={estilo.container}>
-
+    <View style={[estilo.container, { backgroundColor: theme === "daltonic" ? "#AABBCC" : "#191924" }]}>
       <View style={estilo.filtroTitulo}>
-        <Text style={estilo.titulo}>Serviços disponiveis</Text>
-        {/* <ProductListScreen updateFilteredProducts={updateFilteredProducts} /> */}
+        <Text style={estilo.titulo}>Serviços disponíveis</Text>
       </View>
-        <FlatList style={{
-          marginBottom: 70
-        }}
-          data={filteredProducts.length > 0 ? filteredProducts : produtos}
-          keyExtractor={(item) => item.id.toString()}
-          numColumns={2}
-          contentContainerStyle={{ flexGrow: 1, alignItems: 'center' }} // Centraliza verticalmente
-          renderItem={({ item }) => (
-              <Produto nome={item.titulo} id={item.id} destino={item.destinoEntrega} cep={item.cepProduto}/>
-          )}
-        />
-      </View>
+      <FlatList
+        style={{ marginBottom: 70 }}
+        data={filteredProducts.length > 0 ? filteredProducts : produtos}
+        keyExtractor={(item) => item.id.toString()}
+        numColumns={2}
+        contentContainerStyle={{ flexGrow: 1, alignItems: 'center' }}
+        renderItem={({ item }) => (
+          <Produto nome={item.titulo} id={item.id} destino={item.destinoEntrega} cep={item.cepProduto} />
+        )}
+      />
+    </View>
   );
 }

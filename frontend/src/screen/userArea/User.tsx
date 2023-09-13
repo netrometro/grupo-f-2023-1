@@ -8,15 +8,16 @@ import { UserProducts } from "./UserProducts";
 import { Feather } from '@expo/vector-icons'
 import axios from "axios";
 import { MEU_IP } from "../../config";
-
+import { useTheme } from "./../ThemeContext"; // Importe o useTheme
 
 export function User() {
+  const { theme } = useTheme(); // Obtenha o tema do contexto
 
-  //Pegando o email do usuário por uma instancia
+  // Pegando o email do usuário por uma instancia
   const auth = getAuth();
   const user = auth.currentUser;
 
-  //Instancia do navigation
+  // Instancia do navigation
   const navigation = useNavigation();
 
   interface UsuarioData {
@@ -27,7 +28,7 @@ export function User() {
 
   const [usuario, setUsuario] = useState<UsuarioData>({nome: "TESTE", contato: "891238123", endereco: "rua tal"});
 
- //Função para fazer o logout
+  // Função para fazer o logout
   function logout() {
     const auth = getAuth();
     signOut(auth)
@@ -45,10 +46,9 @@ export function User() {
     navigation.navigate("Perfil")
   }
 
-  //Função para fazer GET do usuário logado
+  // Função para fazer GET do usuário logado
   async function getUserData() {
-    try{
-
+    try {
       const apiUrl = `${MEU_IP}/api/usuario/${user.uid}`;
     
       // Faz uma requisição GET para a API usando o Axios
@@ -75,7 +75,7 @@ export function User() {
           } catch (error) {
             setUsuario({nome: "TESTE", contato: "891238123", endereco: "rua tal"})
           }
-        },1000)
+        }, 1000)
       } catch (error) {
         console.error('Erro ao carregar produtos:', error);
       }
@@ -85,15 +85,15 @@ export function User() {
   }, [user]);
 
   return (
-    <View style={estilo.container}>
+    <View style={[estilo.container, { backgroundColor: theme === "daltonic" ? "#AABBCC" : "#191924" }]}>
       <View style={estilo.container_son}>
        <View style={estilo.userPhoto}>
-       <Feather  name="user" size={24} color="#808080"  />
+       <Feather  name="user" size={24} color={theme === "daltonic" ? "black" : "#808080"}  />
        </View>
         {usuario?.nome ? (
-          <Text style={estilo.user_text_info}>{usuario.nome}</Text>
+          <Text style={[estilo.user_text_info, { color: theme === "daltonic" ? "black" : "white" }]}>{usuario.nome}</Text>
         ) : (
-          <Text>Nenhum usuário cadastrado.</Text>
+          <Text>{theme === "daltonic" ? "Nenhum usuário cadastrado." : "No user registered."}</Text>
         )}
         <Text>{user.email}</Text>
         <Text>TESTE</Text>
@@ -101,20 +101,20 @@ export function User() {
       </View>
       <Text
         style={{
-          color: "white",
+          color: theme === "daltonic" ? "black" : "white",
           alignSelf: "flex-start",
           marginLeft: 30,
           marginBottom: 20,
         }}
       >
-        Minhas doações:{" "}
+        {theme === "daltonic" ? "Minhas doações:" : "My donations:"}
       </Text>
       <SafeAreaView style={{ height: 200 }}>
         <UserProducts />
       </SafeAreaView>
       <View style={estilo.button_container}>
         <Button style={estilo.buttonLogout} mode="contained" onPress={() => {trocarTela()}}>
-          Criar Perfil
+          {theme === "daltonic" ? "Criar Perfil" : "Create Profile"}
         </Button>
         <Button
           buttonColor="#D65353"
@@ -124,7 +124,7 @@ export function User() {
             logout();
           }}
         >
-          Logout
+          {theme === "daltonic" ? "Logout" : "Logout"}
         </Button>
       </View>
     </View>
